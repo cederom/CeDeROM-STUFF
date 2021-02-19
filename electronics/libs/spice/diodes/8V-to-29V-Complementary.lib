@@ -1,0 +1,1008 @@
+=========================================================================================================
+
+[DMG1016UDW]
+*N-CH
+.SUBCKT DMG1016VN   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  NMOS L=0.6U W=57.5m
+RD  10  1  240m
+RS  30  3  60m
+RG  20  2  93
+CGS  2  3  57p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  27p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+*********************************************
+.MODEL NMOS NMOS LEVEL=3 U0=500 VMAX=80k
++ ETA=0.1m VTO=0.93 TOX=16.8n NSUB=1e17
+*********************************************
+.MODEL DCGD D CJO=27p VJ=80m M=0.320
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=14p VJ=0.800 M=0.420
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VN
+*P-CH
+.SUBCKT DMG1016VP   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=41m
+RD  10  1  300m
+RS  30  3  75m
+RG  20  2  150
+CGS  2  3  54.55p
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+*********************************************
+.MODEL PMOS PMOS LEVEL=3 U0=300 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=16.8n NSUB=2e17
+*********************************************
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.270
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=20p VJ=0.600 M=0.350
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VP
+
+=========================================================================================================
+
+[DMC2004LPK]
+*---------- DMC2004LPK Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2004LPK_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.1925 
+RS 30 3 0.001 
+RG 20 2 68 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 3.272E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.7E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.9058 
++ TOX = 6E-008  NSUB = 1E+016  KP = 3.223  U0 = 400  KAPPA = 15.35 
+.MODEL DCGD D  CJO = 1.94E-011  VJ = 0.1108  M = 0.3101 
+.MODEL DSUB D  IS = 1E-009  N = 1.905  RS = 0.02633  BV = 25  CJO = 5.066E-012  VJ = 0.1753  M = 0.2672 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=2E-7 N=2.2 BV=13
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2004LPK_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=1E-7 N=2.2 BV=12.3
+.ENDS
+
+*Diodes DMC2004LPK Spice Model v1.0 (ESD added)  Last Revised 2012/6/1
+
+=========================================================================================================
+
+[DMC2004DWK]
+*---------- DMC2004DWK Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2004DWK_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.1925 
+RS 30 3 0.001 
+RG 20 2 68 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 3.272E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.7E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.9058 
++ TOX = 6E-008  NSUB = 1E+016  KP = 3.223  U0 = 400  KAPPA = 15.35 
+.MODEL DCGD D  CJO = 1.94E-011  VJ = 0.1108  M = 0.3101 
+.MODEL DSUB D  IS = 1E-009  N = 1.905  RS = 0.02633  BV = 25  CJO = 5.066E-012  VJ = 0.1753  M = 0.2672 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=2E-7 N=2.2 BV=13
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2004DWK_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=1E-7 N=2.2 BV=12.3
+.ENDS
+
+*Diodes DMC2004DWK Spice Model v1.0 (ESD added)  Last Revised 2012/6/1
+
+=========================================================================================================
+
+[DMC2004VK]
+*---------- DMC2004VK Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2004VK_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.1925 
+RS 30 3 0.001 
+RG 20 2 68 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 3.272E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.7E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.9058 
++ TOX = 6E-008  NSUB = 1E+016  KP = 3.223  U0 = 400  KAPPA = 15.35 
+.MODEL DCGD D  CJO = 1.94E-011  VJ = 0.1108  M = 0.3101 
+.MODEL DSUB D  IS = 1E-009  N = 1.905  RS = 0.02633  BV = 25  CJO = 5.066E-012  VJ = 0.1753  M = 0.2672 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=2E-7 N=2.2 BV=13
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2004VK_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+DESD1 2 5 DESD
+DESD2 3 5 DESD
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.MODEL DESD D  IS=1E-7 N=2.2 BV=12.3
+.ENDS
+
+*Diodes DMC2004VK Spice Model v1.0 (ESD added)  Last Revised 2012/6/1
+
+=========================================================================================================
+
+[DMC2038LVT]
+*---------- DMC2038LVT Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2038LVT_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02716 
+RS 30 3 0.001 
+RG 20 2 1.9 
+CGS 2 3 3.359E-010 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 7.5E-010 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 4.62E+005 ETA = 0.0001 VTO = 0.9264 
++ TOX = 6E-008 NSUB = 1E+017 KP = 48.04 KAPPA = 0.1 U0 = 400 
+.MODEL DCGD D CJO = 3.417E-010 VJ = 0.2406 M = 0.4472 
+.MODEL DSUB D IS = 2.969E-010 N = 1.598 RS = 0.02426 
++ BV = 35 CJO = 4.795E-011 VJ = 0.3436 M = 0.5232 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+.SUBCKT DMC2038LVT_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.04586 
+RS 30 3 0.001 
+RG 20 2 72 
+CGS 2 3 5.078E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 7.9E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 14.56 KAPPA = 1 VTO = -0.75 
+.MODEL DCGD D CJO = 3.371E-010 VJ = 0.226 M = 0.4329 
+.MODEL DSUB D IS = 1.334E-008 N = 1.338 RS = 0.1868 BV = 25 
++ CJO = 3.296E-011 VJ = 0.3087 M = 0.4639 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMC2038LVT_PMOS Spice Model v2.0 Last Revised 2013/8/27
+
+=========================================================================================================
+
+[DMC2990UDJ]
+*---------- DMC2990UDJ Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2990UDJ_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.3743 
+RS 30 3 0.001 
+RG 20 2 113 
+CGS 2 3 2.5E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 8E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.8716 
++ TOX = 6E-008  NSUB = 1.886E+016  KP = 2.108  U0 = 400  KAPPA = 10.7 
+.MODEL DCGD D  CJO = 1.594E-011  VJ = 0.2646  M = 0.429 
+.MODEL DSUB D  IS = 2.265E-009  N = 1.422  RS = 1.834  BV = 25  CJO = 2.7E-012  VJ = 0.2048  M = 0.1841 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2990UDJ_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.6562 
+RS 30 3 0.001 
+RG 20 2 400 
+CGS 2 3 2.653E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5.8E-011 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 0.6965 KAPPA = 32.11 VTO = -0.6305 
+.MODEL DCGD D CJO = 1.549E-011 VJ = 0.1652 M = 0.3749 
+.MODEL DSUB D IS = 3.478E-007 N = 2.097 RS = 3.705 
++ BV = 25 CJO = 3.247E-012 VJ = 1.719E-014 M = 0.02141 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC2990UDJ Spice Model v1.0 Last Revised 2012/11/30
+
+=========================================================================================================
+
+[DMC2400UV]
+*---------- DMC2400UV Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2400UV_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.1925 
+RS 30 3 0.001 
+RG 20 2 68 
+CGS 2 3 3.272E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.7E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.9058 
++ TOX = 6E-008  NSUB = 1E+016  KP = 3.223  U0 = 400  KAPPA = 15.35 
+.MODEL DCGD D  CJO = 1.94E-011  VJ = 0.1108  M = 0.3101 
+.MODEL DSUB D  IS = 1E-009  N = 1.905  RS = 0.02633  BV = 25  CJO = 5.066E-012  VJ = 0.1753  M = 0.2672 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2400UV_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*Diodes DMC2400UV Spice Model v1.0 Last Revised 2014/11/18
+
+=========================================================================================================
+
+[DMC1229UFDB]
+*---------- DMC1229UFDB Spice Model ----------
+
+*NMOS
+.SUBCKT DMC1229UFDB_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.01212 
+RS 30 3 0.001 
+RG 20 2 1.26 
+CGS 2 3 7.966E-010 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.5E-009 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 8E+005  ETA = 0.001  VTO = 0.842 
++ TOX = 6E-008  NSUB = 1E+016  KP = 85.31  U0 = 400  KAPPA = 4.441E-010 
+.MODEL DCGD D  CJO = 5.233E-010  VJ = 0.5  M = 0.5671 
+.MODEL DSUB D  IS = 1.415E-009  N = 1.088  RS = 0.04255  BV = 20  CJO = 1E-015  VJ = 0.6  M = 0.6045 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC1229UFDB_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.0273 
+RS 30 3 0.001 
+RG 20 2 57 
+CGS 2 3 8.383E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.15E-009 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 32.61  KAPPA = 49.86  VTO = -0.9861 
+.MODEL DCGD D  CJO = 7.701E-010  VJ = 0.7998  M = 0.6 
+.MODEL DSUB D  IS = 6.057E-009  N = 1.269  RS = 0.0595  BV = 20  CJO = 3.41E-012  VJ = 0.8  M = 0.6 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*Diodes DMC1229UFDB Spice Model v1.0 Last Revised 2015/6/1
+
+
+
+=========================================================================================================
+
+[DMC1028UFDB]
+*---------- DMC1028UFDB Spice Model ----------
+
+*NMOS
+.SUBCKT DMC1028UFDB_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.01016 
+RS 30 3 0.001 
+RG 20 2 4.8 
+CGS 2 3 6.15E-010 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.5E-009 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 8E+005  ETA = 0.001  VTO = 0.955 
++ TOX = 6E-008  NSUB = 1E+016  KP = 60.27  U0 = 400  KAPPA = 4.441E-010 
+.MODEL DCGD D  CJO = 7.098E-010  VJ = 0.6435  M = 0.6 
+.MODEL DSUB D  IS = 9.003E-010  N = 1.119  RS = 0.04018  BV = 50  CJO = 2.22E-010  VJ = 0.3  M = 0.6045 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC1028UFDB_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.03888 
+RS 30 3 0.001 
+RG 20 2 15 
+CGS 2 3 5.112E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 8E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 17.45  KAPPA = 49.86  VTO = -0.7114 
+.MODEL DCGD D  CJO = 3.238E-010  VJ = 0.6  M = 0.52 
+.MODEL DSUB D  IS = 1.955E-008  N = 1.194  RS = 0.1356  BV = 30  CJO = 1.43E-012  VJ = 0.8  M = 0.6 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*Diodes DMC1028UFDB Spice Model v1.0 Last Revised 2015/6/1
+
+=========================================================================================================
+
+[DMC2450UV]
+*---------- DMC2450UV Spice Model ----------
+
+
+
+*NMOS
+.SUBCKT DMC2450UV_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.2445 
+RS 30 3 1E-008 
+RG 20 2 68 
+CGS 2 3 1.832E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5.732E-011 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 8E+005 ETA = 0.001 VTO = 0.9194 
++ TOX = 6E-008 NSUB = 1E+016 KP = 4.018 U0 = 400 KAPPA = 4.441E-010 
+.MODEL DCGD D CJO = 9.036E-011 VJ = 0.1064 M = 0.9082 
+.MODEL DSUB D IS = 2.332E-010 N = 1.704 RS = 0.05944 BV = 23.5 CJO = 1E-015 VJ = 0.1745 M = 0.9133 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMC2450UV_N  Spice Model v1.0 Last Revised 2015/9/07
+
+=========================================================================================================
+
+[DMG1016VQ]
+*N-CH
+.SUBCKT DMG1016VQ   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  NMOS L=0.6U W=57.5m
+RD  10  1  240m
+RS  30  3  60m
+RG  20  2  93
+CGS  2  3  57p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  27p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+*********************************************
+.MODEL NMOS NMOS LEVEL=3 U0=500 VMAX=80k
++ ETA=0.1m VTO=0.93 TOX=16.8n NSUB=1e17
+*********************************************
+.MODEL DCGD D CJO=27p VJ=80m M=0.320
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=14p VJ=0.800 M=0.420
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VN
+*P-CH
+.SUBCKT DMG1016VP   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=41m
+RD  10  1  300m
+RS  30  3  75m
+RG  20  2  150
+CGS  2  3  54.55p
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+*********************************************
+.MODEL PMOS PMOS LEVEL=3 U0=300 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=16.8n NSUB=2e17
+*********************************************
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.270
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=20p VJ=0.600 M=0.350
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VQ
+
+=========================================================================================================
+
+[DMG1016V]
+*N-CH
+.SUBCKT DMG1016VN   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  NMOS L=0.6U W=57.5m
+RD  10  1  240m
+RS  30  3  60m
+RG  20  2  93
+CGS  2  3  57p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  27p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+*********************************************
+.MODEL NMOS NMOS LEVEL=3 U0=500 VMAX=80k
++ ETA=0.1m VTO=0.93 TOX=16.8n NSUB=1e17
+*********************************************
+.MODEL DCGD D CJO=27p VJ=80m M=0.320
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=14p VJ=0.800 M=0.420
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VN
+*P-CH
+.SUBCKT DMG1016VP   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=41m
+RD  10  1  300m
+RS  30  3  75m
+RG  20  2  150
+CGS  2  3  54.55p
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+*********************************************
+.MODEL PMOS PMOS LEVEL=3 U0=300 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=16.8n NSUB=2e17
+*********************************************
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.270
+*********************************************
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=20p VJ=0.600 M=0.350
+*********************************************
+.MODEL DLIM D IS=100U
+*********************************************
+.ENDS DMG1016VP
+
+=========================================================================================================
+
+[DMC1030UFDBQ]
+*---------- DMC1030UFDBQ Spice Model ----------
+
+*NMOS
+
+.SUBCKT DMC1030UFDBQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01313 
+RS 30 3 0.001 
+RG 20 2 1.63 
+CGS 2 3 8.902E-010 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.22E-009 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 0.7701 
++ TOX = 6E-008 NSUB = 1E+016 KP = 89.51 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 4.613E-010 VJ = 0.6179 M = 0.6 
+.MODEL DSUB D IS = 1.7E-009 N = 1.041 RS = 0.0586 BV = 20 CJO = 2.066E-015 VJ = 0.7549 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+
+*PMOS
+
+.SUBCKT DMC1030UFDBQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.03274 
+RS 30 3 0.001 
+RG 20 2 4.88 
+CGS 2 3 7.966E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 9.5E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 22.87 KAPPA = 19.32 VTO = -0.844 
+.MODEL DCGD D CJO = 8.091E-010 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 1.135E-008 N = 1.287 RS = 0.07544 BV = 20 CJO = 1.739E-010 VJ = 0.8 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMC1030UFDBQ Spice Model v1.0M Last Revised 2016/1/28
+
+=========================================================================================================
+
+[DMC1018UPD]
+*---------- DMC1018UPD Spice Model ----------
+
+*NMOS
+
+*---------- DMC1018UPD Spice Model ----------
+.SUBCKT DMC1018UPD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.003806 
+RS 30 3 0.001 
+RG 20 2 1.63 
+CGS 2 3 1.22E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 2.17E-009 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 1.141 
++ TOX = 6E-008 NSUB = 1E+016 KP = 99.78 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 1.283E-009 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 4.518E-010 N = 1.111 RS = 0.01242 BV = 20 CJO = 2.066E-015 VJ = 0.7549 M = 0.6 TT=1.436E-08 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+
+*---------- DMC1018UPD Spice Model ----------
+.SUBCKT DMC1018UPD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01579 
+RS 30 3 0.001 
+RG 20 2 4.88 
+CGS 2 3 7.293E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 39.52 KAPPA = 19.32 VTO = -1.151 
+.MODEL DCGD D CJO = 5.814E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 3.068E-009 N = 1.23 RS = 0.03607 BV = 20 CJO = 1.832E-010 VJ = 0.6 M = 0.6244 TT=9.8E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMP1018UPD Spice Model v1.0 Last Revised 2015/12/9
+
+=========================================================================================================
+
+[DMC1015UPD]
+*---------- DMC1015UPD Spice Model ----------
+
+*NMOS
+
+.SUBCKT DMC1015UPD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.003806 
+RS 30 3 0.001 
+RG 20 2 1.63 
+CGS 2 3 1.22E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 2.17E-009 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 1.141 
++ TOX = 6E-008 NSUB = 1E+016 KP = 99.78 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 1.283E-009 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 4.518E-010 N = 1.111 RS = 0.01242 BV = 20 CJO = 2.066E-015 VJ = 0.7549 M = 0.6 TT=1.436E-08 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+
+.SUBCKT DMC1015UPD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02073 
+RS 30 3 0.001 
+RG 20 2 10.39 
+CGS 2 3 1.384E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.3E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 44.98 KAPPA = 19.32 VTO = -0.9359 
+.MODEL DCGD D CJO = 7.175E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 6.359E-007 N = 1.663 RS = 0.09391 BV = 20 CJO = 1.769E-012 VJ = 0.8 M = 0.6  
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC1015UPD Spice Model v1.0M Last Revised 2016/3/23
+
+=========================================================================================================
+
+[DMC1016UPD]
+*---------- DMC1016UPD Spice Model ----------
+
+*NMOS
+
+.SUBCKT DMC1016UPD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.003806 
+RS 30 3 0.001 
+RG 20 2 1.63 
+CGS 2 3 1.22E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 2.17E-009 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 1.141 
++ TOX = 6E-008 NSUB = 1E+016 KP = 99.78 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 1.283E-009 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 4.518E-010 N = 1.111 RS = 0.01242 BV = 20 CJO = 2.066E-015 VJ = 0.7549 M = 0.6 TT=1.436E-08 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+
+.SUBCKT DMC1016PD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.006917 
+RS 30 3 0.001 
+RG 20 2 12.02 
+CGS 2 3 2.686E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.8E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 91.34 KAPPA = 19.32 VTO = -0.7199 
+.MODEL DCGD D CJO = 1.478E-009 VJ = 0.6094 M = 0.6 
+.MODEL DSUB D IS = 2.978E-008 N = 1.118 RS = 0.03405 BV = 20 CJO = 3.453E-010 VJ = 0.6 M = 0.6726 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC1016UPD Spice Model v1.0M Last Revised 2016/3/23
+
+=========================================================================================================
+
+[DMC2990UDJQ]
+*---------- DMC2990UDJQ Spice Model ----------
+
+*NMOS
+.SUBCKT DMC2990UDJQ_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.3743 
+RS 30 3 0.001 
+RG 20 2 113 
+CGS 2 3 2.5E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 8E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.01  VTO = 0.8716 
++ TOX = 6E-008  NSUB = 1.886E+016  KP = 2.108  U0 = 400  KAPPA = 10.7 
+.MODEL DCGD D  CJO = 1.594E-011  VJ = 0.2646  M = 0.429 
+.MODEL DSUB D  IS = 2.265E-009  N = 1.422  RS = 1.834  BV = 25  CJO = 2.7E-012  VJ = 0.2048  M = 0.1841 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+
+*PMOS
+.SUBCKT DMC2990UDJQ_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.6562 
+RS 30 3 0.001 
+RG 20 2 400 
+CGS 2 3 2.653E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5.8E-011 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 0.6965 KAPPA = 32.11 VTO = -0.6305 
+.MODEL DCGD D CJO = 1.549E-011 VJ = 0.1652 M = 0.3749 
+.MODEL DSUB D IS = 3.478E-007 N = 2.097 RS = 3.705 
++ BV = 25 CJO = 3.247E-012 VJ = 1.719E-014 M = 0.02141 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC2990UDJQ Spice Model v1.0 Last Revised 2016/9/21
+
+=========================================================================================================

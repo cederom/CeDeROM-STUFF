@@ -1,0 +1,638 @@
+=========================================================================================================
+
+[BST52]
+*ZETEX BST52 Spice Model v1.0 Last Revised 2/8/2004
+    *
+    .SUBCKT BST52 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB614
+    Q2 1 4 3 SUB614 5.39
+    .ENDS BST52
+    *
+    .MODEL SUB614 NPN IS =1.575E-14 NF =1.00 BF =280 IKF=0.08 VAF=284 
+    +             ISE=5.8853E-15 NE =1.3517 NR =1.0469 BR =11 IKR=0.2 
+    +             VAR=13 ISC=5.3795E-14 NC =1.257 RB =0.22 RE =0.375 
+    +             RC =0.40 CJC=3.6E-12 MJC=0.3393 VJC=0.4127 
+    +             CJE=23.7E-12 TF =1.73E-9 TR =260E-9
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FCX605]
+*ZETEX FCX605 Spice Model v1.0 Last Revised 27/04/05
+    *
+    .SUBCKT FCX605 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB605
+    Q2 1 4 3 SUB605 3.46
+    *
+    .MODEL SUB605 NPN IS=4.8E-14 BF=170 VAF=542 NF=1.0039 IKF=0.2 ISE=1.5E-14
+    +NE=1.55 BR=12 VAR=20 NR=1.007 IKR=0.35 ISC=7.486E-14 NC=1.0984 RB=0.17 RE=0.3
+    +RC=0.14 CJE=81E-12 CJC=10.8E-12 VJC=0.58 MJC=0.41 TF=1.024E-9 TR=700E-9
+    .ENDS FCX605
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FCX705]
+*
+*Zetex FCX705 Spice Model v1.0 Last Revised 12/08/08
+*
+.SUBCKT FCX705 1 2 3
+*              C B E
+Q1 1 2 4 SUB705
+Q2 1 4 3 SUB705 4
+*
+.MODEL SUB705 PNP IS=3.35584E-14 BF=85 VAF=212 NF=1.002 IKF=0.817
++ ISE=3.6E-13 NE=4.1 BR=24 VAR=6 NR=0.999 IKR=0.114 ISC=1.406E-13 NC=1.13
++ RB=1.1 RE=0.4 RC=0.0339 CJE=100E-12 CJC=37E-12 VJC=1.045 MJC=0.595
+.ENDS FCX705
+*
+*$
+*
+*                (c)  2008 Diodes Incorporated
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Diodes ").  They  are  supplied
+*   free of charge by Diodes for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved. The models
+*   are believed accurate but  no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Incorporated, 1566 N. Dallas Parkway, Suite 850, Dallas, TX 75248, USA
+
+=========================================================================================================
+
+[FMMT38C]
+*ZETEX FMMT38C Spice Model v1.0 Last Revised 12/6/02
+    *
+    .SUBCKT FMMT38C 1 2 3
+    *               C B E
+    Q1 1 2 4 SUB38C
+    Q2 1 4 3 SUB38C 12.75
+    *
+    .MODEL SUB38C NPN IS=1.1E-14 ISE=7.1E-15 NF=1.012 NE=1.4758 
+    +BF=220 IKF=.12 BR=15 IKR=.05 RE=1.3 RC=.5 RB=.3 VAF=150 
+    +CJE=14.5E-12 CJC=4.14E-12 VJC=.515 MJC=.26 TF=1.15E-9 TR=75E-9
+    .ENDS FMMT38C
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FMMT614]
+*ZETEX FMMT614 Spice Model v1.0 Last Revised 2/8/2004
+    *
+    .SUBCKT FMMT614 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB614
+    Q2 1 4 3 SUB614 5.39
+    .ENDS FMMT614
+    *
+    .MODEL SUB614 NPN IS =1.575E-14 NF =1.00 BF =280 IKF=0.08 VAF=284 
+    +             ISE=5.8853E-15 NE =1.3517 NR =1.0469 BR =11 IKR=0.2 
+    +             VAR=13 ISC=5.3795E-14 NC =1.257 RB =0.22 RE =0.375 
+    +             RC =0.40 CJC=3.6E-12 MJC=0.3393 VJC=0.4127 
+    +             CJE=23.7E-12 TF =1.73E-9 TR =260E-9
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FMMT734]
+*ZETEX FMMT734 Spice Model v1.0 Last Revised 29/8/2006
+    *
+    .SUBCKT FMMT734 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB734 0.4
+    Q2 1 4 3 SUB734 2
+    *
+    .MODEL SUB734 PNP IS =2E-13 NF =1 BF =330 IKF=0.8 
+    +VAF=44 ISE=1E-13 NE =1.4 RCO=4.5 GAMMA=5E-9 
+    +NR =1 BR =20 IKR=0.2 VAR=10 ISC=2e-13 NC =1.25 
+    +RB =0.15 RE =0.15 RC =0.2 QUASIMOD=1
+    +CJC=36E-12 MJC=0.45 VJC=0.75 CJE=110E-12 
+    +TF =0.8E-9 TR =10e-9 XTB=1.4
+    .ENDS FMMT734
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FMMTA13]
+*ZETEX FMMTA13 Spice Model v1.1 Last Revised 6/1/03
+    *
+    .SUBCKT FMMTA13 1 2 3
+    *               C B E
+    Q1 1 2 4 SUB38B
+    Q2 1 4 3 SUB38B 12.75
+    *
+    .MODEL SUB38B NPN IS =1.1E-14 ISE=7.1E-15 NF =1.012 NE =1.4758 
+    +BF =147 IKF=.12 BR =15 IKR=.05 RE =1.3 RC =.5 RB =.3 VAF=150 
+    +CJE=14.5E-12 CJC=4.14E-12 VJC=.515 MJC=.26 TF =1.15E-9 TR =75E-9
+    .ENDS FMMTA13
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FMMTA14]
+*ZETEX FMMTA14 Spice Model v1.0 Last Revised  12/6/2002
+    *
+    .SUBCKT FMMTA14 1 2 3
+    *               C B E
+    Q1 1 2 4 SUB38C
+    Q2 1 4 3 SUB38C 12.75
+    *
+    .MODEL SUB38C NPN IS=1.1E-14 ISE=7.1E-15 NF=1.012 NE=1.4758 
+    +BF=220 IKF=.12 BR=15 IKR=.05 RE=1.3 RC=.5 RB=.3 VAF=150 
+    +CJE=14.5E-12 CJC=4.14E-12 VJC=.515 MJC=.26 TF=1.15E-9 TR=75E-9
+    .ENDS FMMTA14
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZT600]
+*ZETEX FZT600 Spice Model v1.0 Last Revised 23/12/04
+    *
+    .SUBCKT FZT600 1 2 3
+    *               C B E
+    Q1 1 2 4 SUB600
+    Q2 1 4 3 SUB600 2.74
+    *
+    .MODEL SUB600 NPN IS=8.354E-14 BF=70 VAF=18.3 IKF=0.25 ISE=2E-13
+    +NE=1.45 BR=2 VAR=6.5 NR=1 IKR=0.2 ISC=6.138E-13 NC=1.46 RB=0.5 RE=0.25
+    +RC=0.3 CJE=83.7E-12 VJE=0.6868 MJE=0.3362 CJC=8.6E-12 VJC=0.3679
+    +MJC=0.3607 TF=1E-9 TR=1800E-9
+    .ENDS FZT600
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZT600B]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=21JAN2011
+*VERSION=1
+*PINS              C B E
+*
+.SUBCKT FZT600B 1 2 3
+Q1 1 2 4 SUB601B
+Q2 1 4 3 SUB601B 2.74
+*
+.MODEL SUB601B NPN IS=8.354E-14 BF=130 VAF=18.3 IKF=0.2 ISE=2E-13
++NE=1.45 BR=2 VAR=6.5 NR=1 IKR=0.2 ISC=6.138E-13 NC=1.46 RB=0.5 RE=0.25
++RC=0.3 CJE=83.7E-12 VJE=0.6868 MJE=0.3362 CJC=8.6E-12 VJC=0.3679 MJC=0.3607 
++TF=1E-9 TR=1800E-9
+.ENDS
+*
+*$
+
+=========================================================================================================
+
+[FZT603]
+*ZETEX FZT603 Spice Model v1.0 Last Revised 1/7/03
+    *
+    .SUBCKT FZT603 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB603
+    Q2 1 4 3 SUB603 3.46
+    *
+    .MODEL SUB603 NPN IS=1E-13 BF=130 VAF=200 NF=1 IKF=0.45 ISE=1.8E-13
+    +NE=1.5 BR=20 VAR=30 NR=1 IKR=0.45 ISC=7E-13 NC=1.2 RB=0.3 RE=0.3
+    +RC=0.5  CJE=115E-12 CJC=11E-12 VJC=0.85 MJC=0.41 TF=1E-9 TR=250E-9
+    +XTB=1.5
+    .ENDS
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZT605]
+*ZETEX FZT605 Spice Model v1.0 Last Revised 27/04/05
+    *
+    .SUBCKT FZT605 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB605
+    Q2 1 4 3 SUB605 3.46
+    *
+    .MODEL SUB605 NPN IS=4.8E-14 BF=170 VAF=542 NF=1.0039 IKF=0.2 ISE=1.5E-14
+    +NE=1.55 BR=12 VAR=20 NR=1.007 IKR=0.35 ISC=7.486E-14 NC=1.0984 RB=0.17 RE=0.3
+    +RC=0.14 CJE=81E-12 CJC=10.8E-12 VJC=0.58 MJC=0.41 TF=1.024E-9 TR=700E-9
+    .ENDS FZT605
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZT705]
+*ZETEX FZT705 Spice Model v1.0 Last Revised 9/8/90
+    *
+    .SUBCKT FZT705 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB704
+    Q2 1 4 3 SUB704 4
+    *
+    .MODEL SUB704 PNP IS =3.35584E-14 BF =85 VAF=212 NF =1.002 IKF=.817
+    +ISE=3.6E-13 NE =4.1 BR =24 VAR=6 NR =.999 IKR=.114 ISC=1.406E-13 NC =1.13
+    +RB =1.1 RE =.4 RC =.0339 CJE=100E-12 CJC=37E-12 VJC=1.045 MJC=.595
+    .ENDS FZT705
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZTA14]
+*ZETEX FZTA14 Spice Model v1.0 Last revision  25/11/2005
+    *
+    .SUBCKT FZTA14 1 2 3
+    *               C B E
+    Q1 1 2 4 SUB38C
+    Q2 1 4 3 SUB38C 12.75
+    *
+    .MODEL SUB38C NPN IS=1.1E-14 ISE=7.1E-15 NF=1.012 NE=1.4758 
+    +BF=220 IKF=.12 BR=15 IKR=.05 RE=1.3 RC=.5 RB=.3 VAF=150 
+    +CJE=14.5E-12 CJC=4.14E-12 VJC=.515 MJC=.26 TF=1.15E-9 TR=75E-9
+    .ENDS FZTA14
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[MMBT6427]
+*SRC=MMBT6427;DI_MMBT6427;BJTs NPN;Darlington;40.0V 0.500A Diodes Inc. Darlington Transistor
+*SYM=DARBJTN
+.SUBCKT DII_MMBT6427 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1 emtr col  DSUB
+D2 eb base  DSUB
+.MODEL QPWR NPN  (IS=600f NF=1.00 BF=448  VAF=114
++ IKF=0.400 ISE=10.9p NE=2.00 BR=4.00 NR=1.00
++ VAR=48.0  IKR=0.600 RE=0.300 RB=1.20  RC=0.120
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=1.30n  TR=659n )
+
+=========================================================================================================
+
+[MMBTA13]
+*SRC=MMBTA13;DI_MMBTA13;BJTs NPN;Darlington;30.0V 0.300A Diodes Inc. NPN Darlington 
+*SYM=DARBJTN 
+.SUBCKT DI_MMBTA13 col base emtr 
+Q1 col base eb QPWR .1 
+Q2 col eb emtr QPWR 
+D1 emtr col  DSUB 
+D2 eb base  DSUB 
+.MODEL QPWR NPN  (IS=360f NF=1.00 BF=134  VAF=98.6 
++ IKF=0.240 ISE=21.9p NE=2.00 BR=4.00 NR=1.00 
++ VAR=40.0  IKR=0.360 RE=4.00 RB=16.0  RC=1.60 
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p 
++  VJC=1.10 MJC=0.240 TF=3.77n  TR=617n ) 
+.MODEL DSUB D( IS=360f N=1 RS=4.00  BV=30.0 
++ IBV=.001  CJO=13.9p TT=617n ) 
+.ENDS
+
+=========================================================================================================
+
+[MMBTA14]
+*SRC=MMBTA14;DI_MMBTA14;BJTs NPN;Darlington;30.0V 0.300A Diodes Inc. Darlington Transistor
+*SYM=DARBJTN
+.SUBCKT DI_MMBTA14 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1 emtr col  DSUB
+D2 eb base  DSUB
+.MODEL QPWR NPN  (IS=360f NF=1.00 BF=141  VAF=98.6
++ IKF=0.240 ISE=20.8p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.360 RE=0.333 RB=1.33  RC=0.133
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=3.57n  TR=614n )=0.133
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=3.57n  TR=614n )
+.MODEL DSUB D( IS=360f N=1 RS=0.333  BV=30.0
++ IBV=.001  CJO=13.9p TT=614n )
+
+=========================================================================================================
+
+[MMBTA28]
+*SRC=MMBTA28;DI_MMBTA28;BJTs NPN;Darlington;80.0V 0.500A Diodes Inc. NPN Darlington 
+*SYM=DARBJTN 
+.SUBCKT DI_MMBTA28 col base emtr 
+Q1 col base eb QPWR .1 
+Q2 col eb emtr QPWR 
+D1 emtr col  DSUB 
+D2 eb base  DSUB 
+.MODEL QPWR NPN  (IS=600f NF=1.00 BF=134  VAF=161 
++ IKF=0.400 ISE=36.5p NE=2.00 BR=4.00 NR=1.00 
++ VAR=48.0  IKR=0.600 RE=0.500 RB=2.00  RC=0.200 
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p 
++  VJC=1.10 MJC=0.240 TF=6.15n  TR=1.01u ) 
+.MODEL DSUB D( IS=600f N=1 RS=0.500  BV=80.0 
++ IBV=.001  CJO=13.9p TT=1.01u ) 
+.ENDS
+
+=========================================================================================================
+
+[MMBTA63]
+*SRC=MMBTA63;DI_MMBTA63;BJTs PNP;Darlington;30.0V 0.500A Diodes Inc.  Darlington Transistor
+*SYM=DARBJTP
+.SUBCKT DII_MMBTA63 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1  col emtr DSUB
+D2 base eb DSUB
+.MODEL QPWR PNP  (IS=600f NF=1.00 BF=100  VAF=98.6
++ IKF=0.400 ISE=49.0p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.600 RE=0.340 RB=1.36  RC=0.136
++ XTB=1.5 CJE=115p  VJE=0.740 MJE=0.450 CJC=16.5p
++  VJC=1.10 MJC=0.240 TF=5.05n  TR=641n )
+
+=========================================================================================================
+
+[MMBTA64]
+*SRC=MMBTA64;DI_MMBTA64;BJTs PNP;Darlington;30.0V 0.500A Diodes Inc.  Darlington Transistor
+*SYM=DARBJTP
+.SUBCKT DII_MMBTA64 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1  col emtr DSUB
+D2 base eb DSUB
+.MODEL QPWR PNP  (IS=600f NF=1.00 BF=141  VAF=98.6
++ IKF=0.400 ISE=34.6p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.600 RE=0.340 RB=1.36  RC=0.136
++ XTB=1.5 CJE=115p  VJE=0.740 MJE=0.450 CJC=16.5p
++  VJC=1.10 MJC=0.240 TF=3.57n  TR=614n )
+
+=========================================================================================================
+
+[MMST6427]
+*SRC=MMST6427;DI_MMST6427;BJTs NPN;Darlington;40.0V 0.500A Diodes Inc. Darlington Transistor
+*SYM=DARBJTN
+.SUBCKT DII_MMST6427 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1 emtr col  DSUB
+D2 eb base  DSUB
+.MODEL QPWR NPN  (IS=600f NF=1.00 BF=448  VAF=114
++ IKF=0.400 ISE=10.9p NE=2.00 BR=4.00 NR=1.00
++ VAR=48.0  IKR=0.600 RE=0.300 RB=1.20  RC=0.120
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=1.30n  TR=659n )
+
+=========================================================================================================
+
+[MMSTA13]
+*SRC=MMSTA13;DI_MMSTA13;BJTs NPN;Darlington;30.0V 0.300A Diodes Inc. Darlington Transistor
+*SYM=DARBJTN
+.SUBCKT DI_MMSTA13 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1 emtr col  DSUB
+D2 eb base  DSUB
+.MODEL QPWR NPN  (IS=360f NF=1.00 BF=100  VAF=98.6
++ IKF=0.240 ISE=29.4p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.360 RE=0.333 RB=1.33  RC=0.133
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=5.05n  TR=641n )
+
+=========================================================================================================
+
+[MMSTA14]
+*SRC=MMSTA14;DI_MMSTA14;BJTs NPN;Darlington;30.0V 0.300A Diodes Inc. Darlington Transistor
+*SYM=DARBJTN
+.SUBCKT DI_MMSTA14 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1 emtr col  DSUB
+D2 eb base  DSUB
+.MODEL QPWR NPN  (IS=360f NF=1.00 BF=141  VAF=98.6
++ IKF=0.240 ISE=20.8p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.360 RE=0.333 RB=1.33  RC=0.133
++ XTB=1.5 CJE=189p  VJE=0.740 MJE=0.450 CJC=13.9p
++  VJC=1.10 MJC=0.240 TF=3.57n  TR=614n )
+
+=========================================================================================================
+
+[MMSTA63]
+*SRC=MMSTA63;DI_MMSTA63;BJTs PNP;Darlington;30.0V 0.500A Diodes Inc.  Darlington Transistor
+*SYM=DARBJTP
+.SUBCKT MMSTA63 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+.MODEL QPWR PNP  (IS=600f NF=1.00 BF=100  VAF=98.6
++ IKF=0.400 ISE=49.0p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.600 RE=0.340 RB=1.36  RC=0.136
++ XTB=1.5 CJE=115p  VJE=0.740 MJE=0.450 CJC=16.5p
++  VJC=1.10 MJC=0.240 TF=5.05n  TR=641n )
+.ENDS
+
+=========================================================================================================
+
+[MMSTA64]
+*SRC=MMSTA64;DI_MMSTA64;BJTs PNP;Darlington;30.0V 0.500A Diodes Inc.  Darlington Transistor
+*SYM=DARBJTP
+.SUBCKT DII_MMSTA64 col base emtr
+Q1 col base eb QPWR .1
+Q2 col eb emtr QPWR
+D1  col emtr DSUB
+D2 base eb DSUB
+.MODEL QPWR PNP  (IS=600f NF=1.00 BF=141  VAF=98.6
++ IKF=0.400 ISE=34.6p NE=2.00 BR=4.00 NR=1.00
++ VAR=40.0  IKR=0.600 RE=0.340 RB=1.36  RC=0.136
++ XTB=1.5 CJE=115p  VJE=0.740 MJE=0.450 CJC=16.5p
++  VJC=1.10 MJC=0.240 TF=3.57n  TR=614n )
+
+=========================================================================================================
+
+[ZTX603]
+*ZETEX ZTX603 Spice Model v1.0 Last Revised 1/7/03
+    *
+    .SUBCKT ZTX603 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB603
+    Q2 1 4 3 SUB603 3.46
+    *
+    .MODEL SUB603 NPN IS=1E-13 BF=130 VAF=200 NF=1 IKF=0.45 ISE=1.8E-13
+    +NE=1.5 BR=20 VAR=30 NR=1 IKR=0.45 ISC=7E-13 NC=1.2 RB=0.3 RE=0.3
+    +RC=0.5  CJE=115E-12 CJC=11E-12 VJC=0.85 MJC=0.41 TF=1E-9 TR=250E-9
+    +XTB=1.5
+    .ENDS
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZTX605]
+*ZETEX ZTX605 Spice Model v1.0 Last Revised 24/6/93
+    *
+    .SUBCKT ZTX605 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB605
+    Q2 1 4 3 SUB605 3.46
+    *
+    .MODEL SUB605 NPN IS=4.8E-14 BF=170 VAF=542 NF=1.0039 IKF=0.2 ISE=1.5E-14
+    +NE=1.55 BR=12 VAR=20 NR=1.007 IKR=0.35 ISC=7.486E-14 NC=1.0984 RB=0.17 RE=0.3
+    +RC=0.14 CJE=81E-12 CJC=10.8E-12 VJC=0.58 MJC=0.41 TF=1.024E-9 TR=700E-9
+    .ENDS ZTX605
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZTX614]
+*ZETEX ZTX614 Spice Model v1.0 Last Revised 17/12/92
+    *
+    .SUBCKT ZTX614 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB614
+    Q2 1 4 3 SUB614 5.39
+    .ENDS ZTX614
+    *
+    .MODEL SUB614 NPN IS =1.575E-14 NF =1.00 BF =280 IKF=0.08 VAF=284 
+    +             ISE=5.8853E-15 NE =1.3517 NR =1.0469 BR =11 IKR=0.2 
+    +             VAR=13 ISC=5.3795E-14 NC =1.257 RB =0.22 RE =0.375 
+    +             RC =0.40 CJC=3.6E-12 MJC=0.3393 VJC=0.4127 
+    +             CJE=23.7E-12 TF =1.73E-9 TR =260E-9
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZTX705]
+*ZETEX ZTX705 Spice Model v1.0 Last Revised 9/8/90
+    *
+    .SUBCKT ZTX705 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB704
+    Q2 1 4 3 SUB704 4
+    *
+    .MODEL SUB704 PNP IS =3.35584E-14 BF =85 VAF=212 NF =1.002 IKF=.817
+    +ISE=3.6E-13 NE =4.1 BR =24 VAR=6 NR =.999 IKR=.114 ISC=1.406E-13 NC =1.13
+    +RB =1.1 RE =.4 RC =.0339 CJE=100E-12 CJC=37E-12 VJC=1.045 MJC=.595
+    .ENDS ZTX705
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZXTN04120HFF]
+*ZETEX ZXTN04120HFF Spice Model v1.0 Last Revised 09/02/07
+    *
+    .SUBCKT ZXTN04120HFF 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB605
+    Q2 1 4 3 SUB605 3.46
+    *
+    .MODEL SUB605 NPN IS=4.8E-14 BF=170 VAF=542 NF=1.0039 IKF=0.2 ISE=1.5E-14
+    +NE=1.55 BR=12 VAR=20 NR=1.007 IKR=0.35 ISC=7.486E-14 NC=1.0984 RB=0.17 RE=0.3
+    +RC=0.14 CJE=81E-12 CJC=10.8E-12 VJC=0.58 MJC=0.41 TF=1.024E-9 TR=700E-9
+    .ENDS ZXTN04120HFF
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZXTP05120HFF]
+*ZETEX ZXTP05120HFF Spice Model v1.0 Last Revised 08/02/07
+    *
+    .SUBCKT ZXTP05120HFF 1 2 3
+    *              C B E
+    Q1 1 2 4 SUB704
+    Q2 1 4 3 SUB704 4
+    *
+    .MODEL SUB704 PNP IS =3.35584E-14 BF =85 VAF=212 NF =1.002 IKF=.817
+    +ISE=3.6E-13 NE =4.1 BR =24 VAR=6 NR =.999 IKR=.114 ISC=1.406E-13 NC =1.13
+    +RB =1.1 RE =.4 RC =.0339 CJE=100E-12 CJC=37E-12 VJC=1.045 MJC=.595
+    .ENDS ZXTP05120HFF
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[FZT7053]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=21JAN2011
+*VERSION=1
+*PINS          C B E
+*
+.SUBCKT FZT7053 1 2 3
+Q1 1 2 4 SUB614
+Q2 1 4 3 SUB614 5.39
+*
+.MODEL SUB614 NPN IS =1.575E-14 NF =1.00 BF =280 IKF=0.08 VAF=284 
++ ISE=5.8853E-15 NE =1.3517 NR =1.0469 BR =11 IKR=0.2 
++ VAR=13 ISC=5.3795E-14 NC =1.257 RB =0.22 RE =0.375 
++ RC =0.40 CJC=3.6E-12 MJC=0.3393 VJC=0.4127 
++ CJE=23.7E-12 TF =1.73E-9 TR =260E-9
+.ENDS
+*$
+
+=========================================================================================================
+
+[ZXTN04120HK]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_IM
+*SIMULATOR=PSPICE
+*DATE=17Dec2013
+*VERSION=1
+*
+
+.SUBCKT ZXTN04120HK 1 2 3
+*                   C B E
+Q1 1 2 4 SUB04120
+Q2 1 4 3 SUB04120 3.46
+
+.MODEL SUB04120 NPN IS=4.8E-14 BF=170 VAF=542 NF=1.0039 IKF=0.2 ISE=1.5E-14
++NE=1.55 BR=12 VAR=20 NR=1.007 IKR=0.35 ISC=7.486E-14 NC=1.0984 RB=0.17 RE=0.3
++RC=0.14 CJE=81E-12 CJC=10.8E-12 VJC=0.58 MJC=0.41 TF=1.024E-9 TR=700E-9
+.ENDS ZXTN04120HK
+
+*
+*                (c)  2013 Diodes Inc
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Zetex ").  They  are  supplied
+*   free of charge by Zetex for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved.  The models
+*   are believed accurate but no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Zetex Semiconductors Ltd, Zetex Technology Park, Chadderton,
+*   Oldham, United Kingdom, OL9 9LL
+*
+
+=========================================================================================================

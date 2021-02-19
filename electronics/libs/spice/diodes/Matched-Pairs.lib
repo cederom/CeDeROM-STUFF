@@ -1,0 +1,112 @@
+=========================================================================================================
+
+[DMMT3904W]
+*SRC=DMMT3904W;DI_DMMT3904W;BJTs NPN; Si;  40.0V  0.200A  347MHz   Diodes
+Inc. Matched Transistor
+.MODEL DI_DMMT3904W  NPN (IS=20.3f NF=1.00 BF=274 VAF=114
++ IKF=36.4m ISE=6.99p NE=2.00 BR=4.00 NR=1.00
++ VAR=24.0 IKR=90.0m RE=0.657 RB=2.63 RC=0.263
++ XTB=1.5 CJE=8.29p VJE=1.10 MJE=0.500 CJC=7.10p VJC=0.300
++ MJC=0.300 TF=426p TR=71.3n EG=1.12 )
+
+=========================================================================================================
+
+[DMMT3906]
+*****************************************************************************************************************************************
+*SRC=DMMT3906;DI_DMMT3906;BJTs PNP; Si;  40.0V  0.200A  257MHz   Diodes Inc. Matched BJTs - Single device of dual
+.MODEL DI_DMMT3906  PNP (IS=20.3f NF=1.00 BF=437 VAF=114
++ IKF=44.6m ISE=6.81p NE=2.00 BR=4.00 NR=1.00
++ VAR=20.0 IKR=0.120 RE=1.16 RB=4.63 RC=0.463
++ XTB=1.5 CJE=23.5p VJE=1.10 MJE=0.500 CJC=10.7p VJC=0.300
++ MJC=0.300 TF=504p TR=94.3n EG=1.12 )
+*****************************************************************************************************************************************
+
+=========================================================================================================
+
+[DMMT3906W]
+*SRC=DMMT3906W;DI_DMMT3906W;BJTs PNP; Si;  40.0V  0.200A  257MHz   Diodes, Inc. PNP 
+.MODEL DI_DMMT3906W  PNP (IS=20.3f NF=1.00 BF=274 VAF=114 
++ IKF=36.4m ISE=6.99p NE=2.00 BR=4.00 NR=1.00 
++ VAR=20.0 IKR=90.0m RE=1.01 RB=4.03 RC=0.403 
++ XTB=1.5 CJE=12.1p VJE=1.10 MJE=0.500 CJC=10.7p VJC=0.300 
++ MJC=0.300 TF=531p TR=85.6n EG=1.12 )
+
+=========================================================================================================
+
+[DMMT5401]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=10FEB2011
+*VERSION=2
+*PIN_ORDER         
+* 1=C1    6=E1
+* 2=B1    5=E2
+* 3=B2    4=C2
+*
+.SUBCKT DMMT5401 1 2 3 4 5 6
+Q1 1 2 6 Mod1
+Q2 4 3 5 Mod1
+*
+.MODEL Mod1  PNP IS=6E-14 NF=1 BF=130 VAF=360 ISE=6E-14
++ NE=1.5 NR=1 BR=6.5 VAR=37 ISC=8E-12 NC=1.35 RC=0.08 RB=1 RE=0.25
++ CJC=13E-12 MJC=0.46  VJC=0.7 CJE=63E-12 MJE=0.41 VJE=0.9 
++ TF=6.7E-10 TR=1.03E-6 XTB=1.5 QUASIMOD=1 RCO=14 GAMMA=1.5E-8
+.ENDS
+*
+*$
+
+=========================================================================================================
+
+[DMMT5551]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=10FEB2011
+*VERSION=2
+*PIN_ORDER         
+* 1=C1    6=E1
+* 2=B1    5=E2
+* 3=B2    4=C2
+*
+.SUBCKT DMMT5551 1 2 3 4 5 6
+Q1 1 2 6 Mod1
+Q2 4 3 5 Mod1
+*
+.MODEL Mod1  NPN IS=6.5E-15 NF=1 BF=110 VAF=288 ISE=1.0E-14
++ NE=1.5 NR=1 BR=4.5 VAR=70 ISC=3E-12 NC=1.35 RC=0.5 RB =0.26 RE =0.23
++ CJC=6.1E-12 MJC=0.31 VJC=0.4 CJE=57E-12 MJE=0.35 VJE=0.8 TF=0.2E-9
++ TR=1.5E-6 XTB=1.4 QUASIMOD=1 RCO=170 VO=35 GAMMA=2.2E-7
+.ENDS
+*
+*$
+
+=========================================================================================================
+
+[DMMT5551S]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=10FEB2011
+*VERSION=2
+*PIN_ORDER         
+* 1=B1    6=C1
+* 2=E2    5=E1
+* 3=B2    4=C2
+*
+.SUBCKT DMMT5551S 1 2 3 4 5 6
+Q1 6 1 5 Mod1
+Q2 4 3 2 Mod1
+*
+.MODEL Mod1  NPN IS=6.5E-15 NF=1 BF=110 VAF=288 ISE=1.0E-14
++ NE=1.5 NR=1 BR=4.5 VAR=70 ISC=3E-12 NC=1.35 RC=0.5 RB =0.26 RE =0.23
++ CJC=6.1E-12 MJC=0.31 VJC=0.4 CJE=57E-12 MJE=0.35 VJE=0.8 TF=0.2E-9
++ TR=1.5E-6 XTB=1.4 QUASIMOD=1 RCO=170 VO=35 GAMMA=2.2E-7
+.ENDS
+*
+*$
+
+=========================================================================================================

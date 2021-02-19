@@ -1,0 +1,464 @@
+=========================================================================================================
+
+[ZXMC10A816N8]
+*DIODES_INC_SPICE_MODEL ZXMC10A816N8
+*SIMULATOR=SIMETRIX
+*ORIGIN=DZSL_DPG_SU
+*DATE=17Sep2014
+*VERSION=1
+
+** Imported from: C:UserssuppuluriDesktopXMC10A816N8XMC10A816.txt
+
+** PINS: 1=S1 , 2=G1, 3=S2, 4=G2, 5=D21, 6=D22, 7=D11, 8=D12
+
+
+.SUBCKT ZXMC10A816N8 D11 G1 S1 D21 G2 S2 D12 D22
+
+
+*NMOS
+
+M1 1 2 3 3  Nmod1 
+RD D11 1 Rmod1 90E-3
+RS 23 3 Rmod1 84E-3
+RG G1 22 10
+RIN G1 23 2E11
+RDS D11 23 2E9
+CGS 2 3 370E-12 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 380E-12 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 23 D11  DSUB
+EL 2 22 1 3 0.0035
+LS S1 23 2E-9
+RL S1 S2 3E+10
+.MODEL Nmod1 NMOS (LEVEL=3 VTO=3.45 TOX=11E-8 NSUB=2.83E+15 KP=50 NFS=1E+12 IS=1E-15 N=10)
+.MODEL DCGD D (CJO = 8E-12  VJ = 0.6  M = 0.33 T_ABS=25)
+.MODEL DSUB D (IS =5E-12 N=1.08 RS=0.02 BV=105 CJO=200E-12 VJ=0.53 M=0.55 TT=40E-9 IKF=200m)
+.MODEL Rmod1 RES (TC1=1E-3 TC2=6E-6)
+
+
+*PMOS
+
+M2 4 5 6 6  Pmod1
+RD2 D21 4 Rmod2 130E-3
+RS2 53 6 Rmod2 84E-3
+RG2 G2 52 240
+RIN2 G2 53 2E11
+RDS2 D21 53 2E9
+CGS2 5 6 500E-12 
+EGD2 16 0 4 5 1
+VFB2 18 0 0 
+FFB2 4 5 VFB2 1 
+CGD2 17 18 600E-12 
+R12 17 0 1 
+D12 16 17  DLIM 
+DDG2 19 18  DCGD2 
+R22 16 19 1 
+D22 19 0  DLIM 
+DSD2 D21 53 DSUB2
+EL2 5 52 4 6 .0003
+RL2 S2 53 3
+LS2 S2 53 2E-9
+.MODEL Pmod1 PMOS (LEVEL=3 VTO=-3.4 TOX=11E-8 NSUB=3.56E+16 KP=60 NFS=.1E+12 IS=1E-15 N=10)
+.MODEL DCGD2 D (CJO = 240E-12  VJ = 0.45  M = 0.33 T_ABS=25)
+.MODEL DSUB2 D (IS=1E-12 N=1 RS=0.012 BV=105 CJO=100E-12 VJ=0.45 M=0.33 TT=40E-9 IKF=140m TRS1=1.5m)
+.MODEL Rmod2 RES (TC1=2.6e-3 TC2=3E-6)
+
+
+*common model for PMOS and NMOS
+
+.MODEL DLIM D (IS=100U N=1 T_ABS=25)
+Rdrain1 D11 D12 .001m
+Rdrain2 D21 D22 .001m
+.ENDS
+
+
+
+*                (c)  2014 Diodes Inc
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Zetex ").  They  are  supplied
+*   free of charge by Zetex for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved.  The models
+*   are believed accurate but no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Zetex Semiconductors Ltd, Zetex Technology Park, Chadderton,
+*   Oldham, United Kingdom, OL9 9LL
+*
+
+=========================================================================================================
+
+[BSS8402DW]
+*SRC=BSS84;DI_BSS84;MOSFETs P;Enh;50.0V 0.130A 6.00ohms  Diodes Inc. MOSFET
+.MODEL DI_BSS84  PMOS( LEVEL=1 VTO=-1.60 KP=4.87m  GAMMA=1.98
++ PHI=.75  LAMBDA=1.25m RD=0.840 RS=0.840
++ IS=65.0f  PB=0.800 MJ=0.460 CBD=46.6p
++ CBS=55.9p  CGSO=50.7n CGDO=42.2n CGBO=69.5n  )
+*   -- Assumes default L=100U W=100U -- 
+
+*SRC=2N7002;2N7002;MOSFETs N;Enh;60.0V 0.115A 7.50ohms  Diodes Inc. -
+.MODEL 2N7002  NMOS( LEVEL=1 VTO=2.50 KP=32.0m  GAMMA=3.10
++ PHI=.75  LAMBDA=39.9u RD=1.05 RS=1.05
++ IS=57.5f  PB=0.800 MJ=0.460 CBD=98.8p 
++ CBS=119p  CGSO=60.0n CGDO=50.0n CGBO=390n  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMG4511SK4]
+*---------- DMG4511SK4 Spice Model ----------
+
+*NMOS
+.SUBCKT DMG4511SK4_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02 
+RS 30 3 0.0001227 
+RG 20 2 1.56 
+CGS 2 3 8.311E-010 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9.4E-010 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0.001  VTO = 2.45 
++ TOX = 6E-008  NSUB = 1E+016  KP = 43.98  U0 = 400  KAPPA = 10 
+.MODEL DCGD D  CJO = 3.144E-010  VJ = 0.09587  M = 0.3239 
+.MODEL DSUB D  IS = 3.094E-011  N = 1.136  RS = 0.01791  BV = 40  CJO = 1.281E-010  VJ = 0.3722  M = 0.5383 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*PMOS
+.SUBCKT DMG4511SK4_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02422 
+RS 30 3 0.001 
+RG 20 2 7 
+CGS 2 3 9.898E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 8E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.558E+005  ETA = 0.0001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 16.62  KAPPA = 1  VTO = -1.536 
+.MODEL DCGD D  CJO = 3.059E-010  VJ = 0.1859  M = 0.2861 
+.MODEL DSUB D  IS = 3.103E-011  N = 1.129  RS = 0.03535  BV = 45  CJO = 1.446E-010  VJ = 0.8474  M = 0.6504 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*Diodes DMG4511SK4 Spice Model v1.0 Last Revised 2011/10/28
+
+=========================================================================================================
+
+[DMG1029SV]
+*---------- DMG1029SV Spice Model ----------
+
+*NMOS
+.SUBCKT DMG1029SV_N 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  NMOS  L = 1E-006  W = 1E-006 
+RD 10 1 1.631 
+RS 30 3 0.001 
+RG 20 2 133 
+CGS 2 3 2.711E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1  VFB 1 
+CGD 13 14 2.628E-011 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 3 10  DSUB 
+.MODEL NMOS NMOS  LEVEL = 3  VMAX = 1E+006  ETA = 0  VTO = 1.596 
++ TOX = 6E-008  NSUB = 1.945E+017  KP = 1.196  KAPPA = 1E-015  U0 = 400  THETA = 5.648E-007 
+.MODEL DCGD D  CJO = 2.628E-011  VJ = 0.009081  M = 0.2561 
+.MODEL DSUB D  IS = 2.05E-009  N = 1.698  RS = 0.1282  BV = 65  CJO = 6.226E-012  VJ = 1  M = 0.6474 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+
+*PMOS
+.SUBCKT DMG1029SV_P 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 2.072 
+RS 30 3 0.001 
+RG 20 2 1 
+CGS 2 3 2.301E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 4.1E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 TOX = 6E-008 NSUB = 1E+016 KP = 0.3083 KAPPA = 32.1 VTO = -1.513 
+.MODEL DCGD D CJO = 7.698E-012 VJ = 0.2 M = 0.2205 
+.MODEL DSUB D IS = 9.579E-010 N = 1.677 RS = 0.1623  BV = 50 CJO = 9.694E-012 VJ = 0.4761 M = 0.3849 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMG1029SV Spice Model v1.0 Last Revised 2012/4/17
+
+=========================================================================================================
+
+[DMC4029SSD]
+*---------- DMC4029SSD Spice Model ----------
+**************************************************************************************
+* NMOS
+.SUBCKT DMC4029SSD_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.008754 
+RS 30 3 0.001 
+RG 20 2 1.7 
+CGS 2 3 1.04E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 6.6E-010 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 4.62E+005 ETA = 0.0001 VTO = 2.455 
++ TOX = 6E-008 NSUB = 1E+017 KP = 49.07 KAPPA = 1E-015 U0 = 400 
+.MODEL DCGD D CJO = 2.703E-010 VJ = 0.2734 M = 0.3551 
+.MODEL DSUB D IS = 2.278E-010 N = 1.242 RS = 0.007361 
++ BV = 50 CJO = 2.302E-010 VJ = 0.3812 M = 0.5232 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+********************************************************************************V
+* PMOS
+.SUBCKT DMC4029SSD_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.0269 
+RS 30 3 0.001 
+RG 20 2 12.6 
+CGS 2 3 1.121E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 4.441E-010 
++ TOX = 6E-008 NSUB = 1E+016 KP = 23.02 KAPPA = 53.88 VTO = -1.675 
+.MODEL DCGD D CJO = 2.806E-010 VJ = 0.3881 M = 0.3064 
+.MODEL DSUB D IS = 2.613E-010 N = 1.268 RS = 0.01102 
++ BV = 50 CJO = 1.89E-010 VJ = 4.441E-016 M = 1 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC4029SSD Spice Model v1.0 Last Revised 2014/2/5
+
+=========================================================================================================
+
+[DMC4050SSDQ]
+*---------- DMC4050SSDQ Spice Model ----------
+
+*NMOS
+.SUBCKT DMC4050SSDQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01247 
+RS 30 3 0.001 
+RG 20 2 1.29 
+CGS 2 3 1.225E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.7E-009 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 1.378 
++ TOX = 6E-008 NSUB = 1E+016 KP = 59.42 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 5.583E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 1.44E-009 N = 1.222 RS = 0.009951 BV = 47 CJO = 1E-015 VJ = 0.6 M = 0.7823 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+.SUBCKT DMC4050SSDQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.006043 
+RS 30 3 0.001 
+RG 20 2 6.43 
+CGS 2 3 1.554E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.4E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 4.441E-010 
++ TOX = 6E-008 NSUB = 1E+016 KP = 11.66 KAPPA = 9.057 VTO = -1.385 
+.MODEL DCGD D CJO = 5.62E-010 VJ = 0.6 M = 0.4221 
+.MODEL DSUB D IS = 4.586E-010 N = 1.275 RS = 0.01773 BV = 50 CJO = 2.892E-010 VJ = 0.0947 M = 0.3174 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC4050SSDQ Spice Model v1.0M Last Revised 2016/4/1
+
+=========================================================================================================
+
+[DMC6040SSDQ]
+*---------- DMC6040SSDQ Spice Model ----------
+
+*NMOS
+
+.SUBCKT DMC6040SSDQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.03016 
+RS 30 3 0.001 
+RG 20 2 1.66 
+CGS 2 3 1.107E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 8.5E-010 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 2.359 
++ TOX = 6E-008 NSUB = 1E+016 KP = 58.33 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 1.99E-010 VJ = 0.7999 M = 0.6 
+.MODEL DSUB D IS = 2.23E-010 N = 1.26 RS = 0.006689 BV = 67 CJO = 2.221E-010 VJ = 0.6969 M = 0.6 TT=7E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*PMOS
+
+.SUBCKT DMC6040SSDQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.0844 
+RS 30 3 0.001 
+RG 20 2 13.61 
+CGS 2 3 1.079E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 7.5E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 14.83 KAPPA = 19.32 VTO = -1.879 
+.MODEL DCGD D CJO = 2E-010 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 3.531E-010 N = 1.296 RS = 0.01283 BV = 67 CJO = 2.66E-011 VJ = 0.8 M = 0.6 TT=7E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMP6040SSDQ Spice Model v1.0M Last Revised 2016/5/3
+
+=========================================================================================================
+
+[DMC4029SK4]
+*---------- DMC4029SK4 Spice Model ----------
+**************************************************************************************
+* NMOS
+.SUBCKT DMC4029SK4_NMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.008754 
+RS 30 3 0.001 
+RG 20 2 1.7 
+CGS 2 3 1.04E-009 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 6.6E-010 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 4.62E+005 ETA = 0.0001 VTO = 2.455 
++ TOX = 6E-008 NSUB = 1E+017 KP = 49.07 KAPPA = 1E-015 U0 = 400 
+.MODEL DCGD D CJO = 2.703E-010 VJ = 0.2734 M = 0.3551 
+.MODEL DSUB D IS = 2.278E-010 N = 1.242 RS = 0.007361 
++ BV = 50 CJO = 2.302E-010 VJ = 0.3812 M = 0.5232 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+********************************************************************************V
+* PMOS
+.SUBCKT DMC4029SK4_PMOS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.0269 
+RS 30 3 0.001 
+RG 20 2 12.6 
+CGS 2 3 1.121E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 4.441E-010 
++ TOX = 6E-008 NSUB = 1E+016 KP = 23.02 KAPPA = 53.88 VTO = -1.675 
+.MODEL DCGD D CJO = 2.806E-010 VJ = 0.3881 M = 0.3064 
+.MODEL DSUB D IS = 2.613E-010 N = 1.268 RS = 0.01102 
++ BV = 50 CJO = 1.89E-010 VJ = 4.441E-016 M = 1 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMC4029SK4 Spice Model v1.0M Last Revised 2016/6/14
+
+
+=========================================================================================================

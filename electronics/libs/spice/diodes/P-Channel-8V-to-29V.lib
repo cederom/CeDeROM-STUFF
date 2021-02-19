@@ -1,0 +1,2416 @@
+=========================================================================================================
+
+[DMP2035U]
+*SYM=POWMOSP
+.SUBCKT DMP2035U   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=0.9
+RD  10  1  15m
+RS  30  3  4m
+RG  20  2  9.45
+CGS  2  3  1.42n
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  598p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+.MODEL PMOS PMOS LEVEL=3 U0=300 VMAX=40k
++ ETA=0.1m VTO=-1.02 TOX=16.8n NSUB=2e17
+.MODEL DCGD D CJO=598p VJ=0.150 M=0.340
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=40p VJ=0.500 M=0.450
+.MODEL DLIM D IS=100U
+.ENDS
+
+=========================================================================================================
+
+[DMP2066LDM]
+*SRC=DMP2066LDM;DI_DMP2066LDM;MOSFETs P;Enh;20.0V 4.60A 40.0mohms   
+*SYM=POWMOSP
+.SUBCKT DI_DMP2066LDM   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  18.0m
+RS  40  3  2.00m
+RG  20  2  32.6
+CGS  2  3  660p
+EGD 12  0  1  2  1
+VFB 14  0  0
+FFB  1  2  VFB  1
+CGD 13 14  1.47n
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  10 3  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=2.00m VTO=-1.20 KP=43.8
+.MODEL DCGD D (CJO=1.47n VJ=0.600 M=0.680
+.MODEL DSUB D (IS=19.1n N=1.50 RS=0.141 BV=20.0
++ CJO=350p VJ=0.800 M=0.420 TT=223n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2066LSD]
+*SRC=DMP2066LSD;DI_DMP2066LSD;MOSFETs P;Enh;20.0V 5.80A 40.0mohms   
+*SYM=POWMOSP
+.SUBCKT DI_DMP2066LSD   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  18.0m
+RS  40  3  2.00m
+RG  20  2  25.9
+CGS  2  3  660p
+EGD 12  0  1  2  1
+VFB 14  0  0
+FFB  1  2  VFB  1
+CGD 13 14  1.47n
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  10 3  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=2.00m VTO=-1.20 KP=43.8
+.MODEL DCGD D (CJO=1.47n VJ=0.600 M=0.680
+.MODEL DSUB D (IS=24.1n N=1.50 RS=0.112 BV=20.0
++ CJO=350p VJ=0.800 M=0.420 TT=239n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMG2301U]
+*SYM=POWMOSP
+.SUBCKT DMG2301U   D=10 G=20 S=30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=0.4
+RD  10  1  60m
+RS  30  3  15m
+RG  20  2  44.9
+CGS  2  3  560p
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  258p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+.MODEL PMOS PMOS LEVEL=3 U0=300 VMAX=40k
++ ETA=0.1m VTO=-1.0 TOX=16.8n NSUB=5.36e16
+.MODEL DCGD D CJO=298p VJ=0.50 M=0.550
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20
++ CJO=28p VJ=0.500 M=0.650
+.MODEL DLIM D IS=100U
+.ENDS
+
+=========================================================================================================
+
+[DMG3415U]
+*---------- DMG3415U Spice Model ----------
+.SUBCKT DMG3415U 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.0317 
+RS 30 3 0.001 
+RG 20 2 251 
+CGS 2 3 9.65E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 2.464E+005  KP = 25.76  ETA = 0.005087 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.7287  VTO = -0.7669 
+.MODEL DCGD D  CJO = 4.12E-010  VJ = 0.1028  M = 0.3062 
+.MODEL DSUB D  IS = 2.605E-008  N = 1.315  RS = 0.07863  BV = 20  CJO = 2.196E-010  VJ = 0.2994  M = 0.4305 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG3415U Spice Model v2.0 Last Revised 2013/12/10
+
+=========================================================================================================
+
+[DMG3415UFY4]
+*---------- DMG3415UFY4 Spice Model ----------
+.SUBCKT DMG3415UFY4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02849 
+RS 30 3 0.001 
+RG 20 2 251 
+CGS 2 3 9.685E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.25E-009 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.206E+005  KP = 26.84  ETA = 0.004426 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.2906  VTO = -0.7669 
+.MODEL DCGD D  CJO = 6.481E-010  VJ = 0.4221  M = 0.4512 
+.MODEL DSUB D  IS = 2.605E-008  N = 1.315  RS = 0.07863  BV = 20  CJO = 1.057E-010  VJ = 0.008444  M = 0.2401 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG3415UFY4 Spice Model v1.0 Last Revised 2011/3/24
+
+=========================================================================================================
+
+[DMP2066LSN]
+*SRC=DMP2066LSN;DI_DMP2066LSN;MOSFETs P;Enh;20.0V 4.60A 40.0mohms  Diodes Inc MOSFET
+*SYM=POWMOSP
+.SUBCKT DI_DMP2066LSN   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  18.0m
+RS  40  3  2.00m
+RG  20  2  32.6
+CGS  2  3  660p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  1.47n
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=1.13m VTO=-1.20 KP=44.8
+.MODEL DCGD D (CJO=1.47n VJ=0.600 M=0.680
+.MODEL DSUB D (IS=19.1n N=1.50 RS=97.8m BV=20.0
++ CJO=350p VJ=0.800 M=0.420 TT=188n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2066LSS]
+*SRC=DMP2066LSS;DI_DMP2066LSS;MOSFETs P;Enh;20.0V 6.50A 40.0mohms   
+*SYM=POWMOSP
+.SUBCKT DI_DMP2066LSS   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  18.0m
+RS  40  3  2.00m
+RG  20  2  23.1
+CGS  2  3  660p
+EGD 12  0  1  2  1
+VFB 14  0  0
+FFB  1  2  VFB  1
+CGD 13 14  1.47n
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  10 3  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=2.00m VTO=-1.20 KP=43.8
+.MODEL DCGD D (CJO=1.47n VJ=0.600 M=0.680
+.MODEL DSUB D (IS=27.0n N=1.50 RS=0.100 BV=20.0
++ CJO=350p VJ=0.800 M=0.420 TT=247n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2305U]
+*---------- DMP2305U Spice Model ----------
+.SUBCKT DMP2305U 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.03653 
+RS 30 3 0.001 
+RG 20 2 23 
+CGS 2 3 6.954E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 8.85E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.385E+005  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 24.44  KAPPA = 0.8442  VTO = -0.8978 
+.MODEL DCGD D  CJO = 3.468E-010  VJ = 0.2064  M = 0.3945 
+.MODEL DSUB D  IS = 4.536E-009  N = 1.339  RS = 0.05752  BV = 30  CJO = 2.406E-011  VJ = 1.677E-012  M = 0.8 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2305U  Spice Model v1.0 Last Revised 2011/6/20
+
+=========================================================================================================
+
+[DMP2160UFDB]
+*---------- 
+DMP2160UFDB Spice Model ----------
+.SUBCKT DMP2160UFDB 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.06732 
+RS 30 3 0.001 
+RG 20 2 44.9 
+CGS 2 3 5.341E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.75E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.391E+005  KP = 20.82  ETA = 0.005556 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.5405  VTO = -0.9485 
+.MODEL DCGD D  CJO = 3.766E-010  VJ = 0.2194  M = 0.4355 
+.MODEL DSUB D  IS = 8.7E-009  N = 1.353  RS = 0.08758  BV = 25  CJO = 1E-012  VJ = 0.3188  M = 0.5753 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2160UFDB Spice Model v1.0 Last Revised 2011/6/14
+
+=========================================================================================================
+
+[DMP2123L]
+*SRC=DMP2123L;DI_DMP2123L;MOSFETs P;Enh;20.0V 3.00A 0.123ohms  Diodes Inc MOSFET
+*SYM=POWMOSP
+.SUBCKT DI_DMP2123L   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  57.4m
+RS  40  3  4.07m
+RG  20  2  50.0
+CGS  2  3  342p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  966p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=1.80m VTO=-1.25 KP=44.2
+.MODEL DCGD D (CJO=966p VJ=0.600 M=0.680
+.MODEL DSUB D (IS=12.5n N=1.50 RS=0.170 BV=20.0
++ CJO=230p VJ=0.800 M=0.420 TT=196n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2130L]
+*SRC=DMP2130L;DI_DMP2130L;MOSFETs P;Enh;20.0V 1.00A 0.125ohms  Diodes Inc MOSFET
+*SYM=POWMOSP
+.SUBCKT DI_DMP2130L   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  58.4m
+RS  40  3  4.12m
+RG  20  2  150
+CGS  2  3  342p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  966p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=2.00m VTO=-1.25 KP=44.2Meg
+.MODEL DCGD D (CJO=966p VJ=0.600 M=0.680
+.MODEL DSUB D (IS=4.15n N=1.50 RS=0.510 BV=20.0
++ CJO=230p VJ=0.800 M=0.420 TT=141n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2130LDM]
+*SRC=DMP2130LDM;DI_DMP2130LDM;MOSFETs P;Enh;20.0V 3.40A 80.0mohms  Diodes Inc MOSFET
+*SYM=POWMOSP
+.SUBCKT DI_DMP2130LDM   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  37.0m
+RS  40  3  3.00m
+RG  20  2  44.1
+CGS  2  3  345p
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  937p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=1.53m VTO=-1.25 KP=21.9
+.MODEL DCGD D (CJO=937p VJ=0.600 M=0.680
+.MODEL DSUB D (IS=14.1n N=1.50 RS=0.150 BV=20.0
++ CJO=224p VJ=0.800 M=0.420 TT=188n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2160UW]
+*---------- 
+DMP2160UW Spice Model ----------
+.SUBCKT DMP2160UW 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.06732 
+RS 30 3 0.001 
+RG 20 2 44.9 
+CGS 2 3 5.341E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.75E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.391E+005  KP = 20.82  ETA = 0.005556 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.5405  VTO = -0.9485 
+.MODEL DCGD D  CJO = 3.766E-010  VJ = 0.2194  M = 0.4355 
+.MODEL DSUB D  IS = 8.7E-009  N = 1.353  RS = 0.08758  BV = 25  CJO = 1E-012  VJ = 0.3188  M = 0.5753 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2160UW Spice Model v1.0 Last Revised 2011/6/14
+
+=========================================================================================================
+
+[DMP2225L]
+*DIODES_INC_SPICE_MODEL DMP2225L
+*SIMULATOR=SIMETRIX
+*ORIGIN=DZSL_DPG_SU
+*DATE=18sep2013
+*VERSION=2
+*PINS 10=D 20=G 30=S
+
+
+.SUBCKT DMP2225L   10 20 30
+M1 1 2 3 3  Pmod1
+RD 10 1 Rmod1 45E-3
+RS 23 3 Rmod1 10E-3
+RG 20 22 14
+RIN 20 23 2E11
+RDS 10 23 2E9
+CGS 2 3 220E-12 
+EGD 12 0 1 2 1
+REGD 12 0 1
+VFB 14 0 0 
+FFB 1 2 VFB 1 
+CGD 13 14 480E-12 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 10 23 DSUB
+EL 2 22 1 3 .003
+RL 30 23 3
+LS  30 23 2E-9
+.MODEL Pmod1 PMOS (LEVEL=3 VTO=-1.13 TOX=7.5E-8 NSUB=1E+16 KP=7.5 NFS=1E+11 IS=1E-15 N=10)
+.MODEL DCGD D (CJO = 380E-12  VJ = 0.45  M = 0.33 T_ABS=25)
+.MODEL DSUB D (IS=.9E-12 N=1.02 RS=0.035 BV=22 CJO=94E-12 VJ=0.45 M=0.33 TT=3E-9)
+.MODEL DLIM D (IS=100U N=1 T_ABS=25)
+.MODEL Rmod1 RES (TC1=1e-3 TC2=1E-6)
+.ENDS
+
+.SIMULATOR DEFAULT
+
+
+*                (c)  2013 Diodes Inc
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Zetex ").  They  are  supplied
+*   free of charge by Zetex for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved.  The models
+*   are believed accurate but no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Zetex Semiconductors Ltd, Zetex Technology Park, Chadderton,
+*   Oldham, United Kingdom, OL9 9LL
+
+=========================================================================================================
+
+[DMP2104LP]
+*SRC=DMP2104LP;???;MOSFETs P;Enh;20.0V 1.50A 0.150ohms  Diodes, Inc. 
+.MODEL ???  PMOS( LEVEL=1 VTO=-1.00 KP=11.9  GAMMA=1.24
++ PHI=.75  LAMBDA=386u RD=21.0m RS=21.0m
++ IS=750f  PB=0.800 MJ=0.460 CBD=81.1p 
++ CBS=97.4p  CGSO=720n CGDO=600n CGBO=1.88u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2104V]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=01/03/2010
+*VERSION=2
+*------connections-------D_G_S
+*
+.SUBCKT DMP2104V 1 2 3
+M1 1 2 3 3 Pmod1
+M2 1 2 3 3 Pmod2
+M3 1 2 3 3 Pmod3
+.MODEL Pmod1 PMOS(LEVEL=1 VTO=-1.08 KP=11.9  GAMMA=1.24
++ PHI=.75  LAMBDA=244u RD=45m RS=21.0m
++ IS=475f  PB=0.800 MJ=0.460 CBD=81.1p 
++ CBS=97.4p  CGSO=720n CGDO=600n CGBO=1.88u)
+.MODEL Pmod2 PMOS(LEVEL=1 VTO=-0.88 KP=1.2 RD=45 RS=2.1)
+.MODEL Pmod3 PMOS(LEVEL=1 VTO=-0.68 KP=0.12 RD=450 RS=210)
+.ENDS
+*
+*$
+
+=========================================================================================================
+
+[DMP2240UDM]
+*SRC=DMP2240UDM;DI_DMP2240UDM;MOSFETs Enh;20.0V 2.00A 0.150ohms  Diodes Inc MOSFET
+.MODEL DI_DMP2240UDM  PMOS( LEVEL=1 VTO=1.00 KP=11.9u  GAMMA=1.24
++ PHI=.75  LAMBDA=514u RD=21.0m RS=21.0m
++ IS=1.00p  PB=0.800 MJ=0.460 CBD=81.1p 
++ CBS=97.4p  CGSO=720n CGDO=600n CGBO=1.88u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[ZXM62P02E6]
+*ZETEX ZXM62P02E6 Spice Model v1.0 Last Revised 9/8/05
+    *
+    .SUBCKT ZXM62P02E6 30 40 50
+    *----connections----D G S
+    *
+    M1 6 20 8 8 MOSMOD
+    M2 6 20 8 8 MOSMODS
+    RG 4 2 11
+    RIN 2 8 200E6
+    RD 3 6 RDSMOD 0.04
+    RS 8 5 RDSMOD 0.025
+    RL 3 5 35E6
+    C1 2 8 390E-12
+    C3 15 14 450E-12 
+    C4 16 8 550E-12
+    D1 3 5 DMOD1
+    D2 3 17 DMOD2
+    S1 2 15 13 14 SMOD1a
+    S2 13 15 13 14 SMOD1b
+    S3 16 13 8 13 SMOD2a
+    S4 16 2 8 13 SMOD2b
+    Egs1 2 17 2 8 1
+    Egs2 13 8 2 8 1
+    Eds1 14 8 3 8 1
+    Egt1 2 20 21 8 1
+    Vgt1 8 22 1
+    Igt1 8 21 1
+    Rgt 21 22 RMOD2 1
+    LD 3 30 0.3E-9
+    LG 4 40 1.9E-9
+    LS 5 50 1.9E-9
+    .MODEL MOSMOD PMOS VTO=-1.50 IS=1E-15 KP=3.8 CBD=245E-12 PB=1 LAMBDA=4.9E-2
+    .MODEL MOSMODS PMOS VTO=-1.20 IS=1E-15 KP=0.04 PB=1
+    .MODEL DMOD1 D IS=4E-12 RS=0.05 N=1.04 BV=23 TT=1e-8 
+    .MODEL DMOD2 D CJO=206e-12 IS=1e-30 N=10
+    .MODEL SMOD1a VSWITCH RON=1e-2 ROFF=1e4  VON=-1.75 VOFF=2.75
+    .MODEL SMOD1b VSWITCH RON=1e-2 ROFF=1e4  VON=2.75 VOFF=-1.75
+    .MODEL SMOD2a VSWITCH RON=1e-2 ROFF=1e4  VON=-1.5 VOFF=-3.5
+    .MODEL SMOD2b VSWITCH RON=1e-2 ROFF=1e4  VON=-3.5 VOFF=-1.5
+    .MODEL RDSMOD RES (TC1=4E-3 TC2=7E-6)
+    .MODEL RMOD2 RES (TC1=2E-3 TC2=2.5E-6)
+    .ENDS ZXM62P02E6
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[DMP2240UW]
+*---------- DMP2240UW Spice Model ----------
+.SUBCKT DMP2240UW 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.04586 
+RS 30 3 0.001 
+RG 20 2 72 
+CGS 2 3 5.078E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 7.9E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 14.56 KAPPA = 1 VTO = -0.75 
+.MODEL DCGD D CJO = 3.371E-010 VJ = 0.226 M = 0.4329 
+.MODEL DSUB D IS = 1.334E-008 N = 1.338 RS = 0.1868 BV = 25 
++ CJO = 3.296E-011 VJ = 0.3087 M = 0.4639 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMP2240UW Spice Model v1.0 Last Revised 2015/06/10
+
+=========================================================================================================
+
+[ZXMD63P02X]
+*ZETEX ZXMD63P02X Spice Model v1.0 Last Revised 18/8/00
+    *
+    .SUBCKT ZXMD63P02X 3 4 5
+    *               D G S
+    M1 3 2 5 5 M63P02
+    RG 4 2 18
+    RL 3 5 1E9
+    C1 2 5 700E-12
+    C2 3 2 55E-12
+    D1 3 5 D63P02
+    *
+    .MODEL M63P02 PMOS VTO=-1.37 RS=0.08 RD=0.04 KP=8
+    +CBD=700E-12 LAMBDA=9E-3
+    .MODEL D63P02 D IS=4E-12 N=1.04 IKF=44E-3 RS=96E-3
+    .ENDS ZXMD63P02X
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[ZXM61P02F]
+*ZETEX ZXM61P02F Spice Model v1.0 Last Revised 24/2/04
+    *
+    .SUBCKT ZXM61P02F 3 4 5
+    *---connections---D G S
+    *
+    M1 6 20 8 8 MOSMOD
+    M2 6 20 8 8 MOSMODS
+    RG 4 2 8
+    RIN 2 8 200E6
+    RD 3 6 RDSMOD 0.09
+    RS 8 5 RDSMOD 0.068
+    RL 3 5 35E6
+    C1 2 8 207E-12
+    C3 15 14 267E-12 
+    C4 16 8 294E-12
+    D1 3 5 DMOD1
+    D2 3 17 DMOD2
+    S1 2 15 13 14 SMOD1a
+    S2 13 15 13 14 SMOD1b
+    S3 16 13 8 13 SMOD2a
+    S4 16 2 8 13 SMOD2b
+    Egs1 2 17 2 8 1
+    Egs2 13 8 2 8 1
+    Eds1 14 8 3 8 1
+    Egt1 2 20 21 8 1
+    Vgt1 8 22 1
+    Igt1 8 21 1
+    Rgt 21 22 RMOD2 1
+    .MODEL MOSMOD PMOS VTO=-1.6 IS=1E-15 KP=2.1 CBD=102E-12 PB=1 LAMBDA=4.9E-3
+    .MODEL MOSMODS PMOS VTO=-1.2 IS=1E-15 KP=0.21 PB=1
+    .MODEL DMOD1 D IS=3E-13 RS=0.13 N=1.01 BV=24 TT=2e-8
+    .MODEL DMOD2 D CJO=110e-12 IS=1e-30 N=10
+    .MODEL SMOD1a VSWITCH RON=1e-2 ROFF=1e4  VON=-1.75 VOFF=2.75
+    .MODEL SMOD1b VSWITCH RON=1e-2 ROFF=1e4  VON=2.75 VOFF=-1.75
+    .MODEL SMOD2a VSWITCH RON=1e-2 ROFF=1e4  VON=-1.5 VOFF=-3.5
+    .MODEL SMOD2b VSWITCH RON=1e-2 ROFF=1e4  VON=-3.5 VOFF=-1.5
+    .MODEL RDSMOD RES (TC1=2.4E-3 TC2=1.5E-5)
+    .MODEL RMOD2 RES (TC1=0.9E-3 TC2=1.5E-6)
+    .ENDS ZXM61P02F
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[DMG1013UW]
+*SYM=POWMOSP
+.SUBCKT DMG1013UW   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  20  3  3  PMOS L=0.6U W=47.66m
+RD  10  1  300m
+RS  30  3  85m
+CGS  20  3  57.55p
+EGD 12  30  20  1  1
+VFB 14  30  0
+FFB  20  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+.MODEL PMOS PMOS LEVEL=3 U0=200 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=20n NSUB=2.1e16
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.320
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20.0
++ CJO=20p VJ=0.600 M=0.50
+.MODEL DLIM D IS=100U
+.ENDS
+
+*Diodes DMG1013UW  Spice Model v1.0 Last Revised 2014/6/17
+
+=========================================================================================================
+
+[DMP2004K]
+*SRC=DMP2004K;DI_DMP2004K;MOSFETs P;Enh;20.0V 0.600A 0.900ohms  DIODES INC MOSFET
+.MODEL DI_DMP2004K  PMOS( LEVEL=1 VTO=-1.00 KP=0.200  GAMMA=1.24
++ PHI=.75  LAMBDA=208u RD=0.126 RS=0.126
++ IS=300f  PB=0.800 MJ=0.460 CBD=40.6p 
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2004WK]
+*SRC=DMP2004WK;DI_DMP2004WK;MOSFETs P;Enh;20.0V 0.400A 0.900ohms  DIODES INC MOSFET
+.MODEL DI_DMP2004WK  PMOS( LEVEL=1 VTO=-1.00 KP=0.200  GAMMA=1.24
++ PHI=.75  LAMBDA=208u RD=0.126 RS=0.126
++ IS=200f  PB=0.800 MJ=0.460 CBD=40.6p 
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2004VK]
+*
+*DIODES_INC_SPICE_MODEL
+*ORIGIN=DZSL_DPG_GM
+*SIMULATOR=PSPICE
+*DATE=01/03/2010
+*VERSION=2
+*------connections-------D_G_S
+*
+.SUBCKT DMP2004VK 1 2 3
+M1 1 2 3 3 Pmod1
+M2 1 2 3 3 Pmod2
+M3 1 2 3 3 Pmod3
+.MODEL Pmod1 PMOS(LEVEL=1 VTO=-0.95 KP=1.5 GAMMA=1.24
++ PHI=.75  LAMBDA=208u RD=0.5 RS=0.126
++ IS=265f  PB=0.800 MJ=0.460 CBD=40.6p
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u)
+.MODEL Pmod2 PMOS(LEVEL=1 VTO=-0.75 KP=0.15 RD=50 RS=13)
+.MODEL Pmod3 PMOS(LEVEL=1 VTO=-0.55 KP=0.015 RD=500 RS=130)
+.ENDS
+*
+*$
+
+=========================================================================================================
+
+[DMG1023UV]
+*---------- DMG1023UV Spice Model ----------
+.SUBCKT DMG1023UV 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.3494 
+RS 30 3 0.001 
+RG 20 2 147 
+CGS 2 3 5.502E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 200  VMAX = 4E+004  KP = 1.814 
++ ETA = 0.0001  TOX = 2E-008  NSUB = 1E+015  KAPPA = 0.3557  VTO = -0.8709 
+.MODEL DCGD D  CJO = 2.616E-011  VJ = 0.127  M = 0.3001 
+.MODEL DSUB D  IS = 1.524E-009  N = 1.789  RS = 0.1462  BV = 22  CJO = 1.689E-011  VJ = 0.3791  M = 0.2844 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG1023UV Spice Model v1.0 Last Revised 2010/10/4
+
+=========================================================================================================
+
+[DMP2004DMK]
+*SRC=DMP2004DMK;DI_DMP2004DMK;MOSFETs P;Enh;20.0V 0.550A 0.900ohms  DIODES INC MOSFET
+.MODEL DI_DMP2004DMK  PMOS( LEVEL=1 VTO=-1.00 KP=0.200  GAMMA=1.24
++ PHI=.75  LAMBDA=208u RD=0.126 RS=0.126
++ IS=275f  PB=0.800 MJ=0.460 CBD=40.6p 
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2004DWK]
+*SRC=DMP2004DWK;DI_DMP2004DWK;MOSFETs P;Enh;20.0V 0.430A 0.900ohms  DIODES INC MOSFET
+.MODEL DI_DMP2004DWK  PMOS( LEVEL=1 VTO=-1.00 KP=0.200  GAMMA=1.24
++ PHI=.75  LAMBDA=208u RD=0.126 RS=0.126
++ IS=215f  PB=0.800 MJ=0.460 CBD=40.6p 
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2004TK]
+*SRC=DMP2004TK;DI_DMP2004TK;MOSFETs P;Enh;20.0V 0.430A 2.40ohms  DIODES INC MOSFET
+.MODEL DI_DMP2004TK  PMOS( LEVEL=1 VTO=-1.00 KP=0.200  GAMMA=1.24
++ PHI=.75  LAMBDA=447u RD=0.336 RS=0.336
++ IS=215f  PB=0.800 MJ=0.460 CBD=40.6p 
++ CBS=48.7p  CGSO=240n CGDO=200n CGBO=1.31u  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2012SN]
+*SRC=DMP2012SN;DI_DMP2012SN;MOSFETs P;Enh;20.0V 0.700A 0.370ohms  Diodes Inc. MOSFET
+.MODEL DI_DMP2012SN  PMOS( LEVEL=1 VTO=-1.20 KP=5.62u  GAMMA=1.49
++ PHI=.75  LAMBDA=365u RD=51.8m RS=51.8m
++ IS=350f  PB=0.800 MJ=0.460 CBD=232p 
++ CBS=278p  CGSO=600n CGDO=500n CGBO=700n  )
+*   -- Assumes default L=100U W=100U --
+
+=========================================================================================================
+
+[DMP2069UFY4]
+*---------- DMP2069UFY4 Spice Model ----------
+.SUBCKT DMP2069UFY4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.0317 
+RS 30 3 0.001 
+RG 20 2 251 
+CGS 2 3 9.65E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 2.464E+005  KP = 25.76  ETA = 0.005087 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.7287  VTO = -0.7669 
+.MODEL DCGD D  CJO = 4.12E-010  VJ = 0.1028  M = 0.3062 
+.MODEL DSUB D  IS = 2.605E-008  N = 1.315  RS = 0.07863  BV = 20  CJO = 2.196E-010  VJ = 0.2994  M = 0.4305 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2069UFY4 Spice Model v1.0 Last Revised 2011/3/25
+
+=========================================================================================================
+
+[DMP2160U]
+*---------- 
+DMP2160U Spice Model ----------
+.SUBCKT DMP2160U 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.06732 
+RS 30 3 0.001 
+RG 20 2 44.9 
+CGS 2 3 5.341E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.75E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.391E+005  KP = 20.82  ETA = 0.005556 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.5405  VTO = -0.9485 
+.MODEL DCGD D  CJO = 3.766E-010  VJ = 0.2194  M = 0.4355 
+.MODEL DSUB D  IS = 8.7E-009  N = 1.353  RS = 0.08758  BV = 25  CJO = 1E-012  VJ = 0.3188  M = 0.5753 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2160U Spice Model v1.0 Last Revised 2011/6/14
+
+=========================================================================================================
+
+[DMP2215L]
+*DIODES_INC_SPICE_MODEL DMP2215L
+*SIMULATOR=SIMETRIX
+*ORIGIN=DZSL_DPG_SU
+*DATE=06Jan2012
+*VERSION=1
+*PINS 10=D 20=G 30=S
+
+
+.SUBCKT DMP2215L   10 20 30
+M1 1 2 3 3  Pmod1
+RD 10 1 Rmod1 45E-3
+RS 23 3 Rmod1 10E-3
+RG 20 22 14
+RIN 20 23 2E11
+RDS 10 23 2E9
+CGS 2 3 220E-12 
+EGD 12 0 1 2 1
+REGD 12 0 1
+VFB 14 0 0 
+FFB 1 2 VFB 1 
+CGD 13 14 480E-12 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 10 23 DSUB
+EL 2 22 1 3 .003
+RL 30 23 3
+LS  30 23 2E-9
+.MODEL Pmod1 PMOS (LEVEL=3 VTO=-1.13 TOX=7.5E-8 NSUB=1E+16 KP=7.5 NFS=1E+11 IS=1E-15 N=10)
+.MODEL DCGD D (CJO = 380E-12  VJ = 0.45  M = 0.33 T_ABS=25)
+.MODEL DSUB D (IS=.9E-12 N=1.02 RS=0.035 BV=22 CJO=94E-12 VJ=0.45 M=0.33 TT=3E-9)
+.MODEL DLIM D (IS=100U N=1 T_ABS=25)
+.MODEL Rmod1 RES (TC1=1e-3 TC2=1E-6)
+.ENDS
+
+.SIMULATOR DEFAULT
+
+=========================================================================================================
+
+[ZXM66P02N8]
+*ZETEX ZXM66P02N8 Spice Model v2.0 Last revision 15/3/07
+    *
+    .SUBCKT ZXM66P02N8 3 4 5
+    *----connections----D G S
+    *
+    M1 6 20 8 8 MOSMOD
+    M2 6 20 8 8 MOSMODS
+    RG 41 2 4.7
+    RIN 2 8 200E6
+    RD 31 6 RDSMOD 0.001
+    RS 8 51 RDSMOD 0.009
+    RL 3 5 350E6
+    C1 2 8 1435E-12
+    C2 3 2 940E-12
+    C3 15 14 4758E-12 
+    C4 16 8 5008E-12
+    D1 3 5 DMOD1
+    Egt1 2 20 21 8 1
+    Vgt1 8 22 1
+    Igt1 8 21 1
+    Rgt 21 22 RMOD2 1
+    S1 2 15 13 14 SMOD1a
+    S2 13 15 13 14 SMOD1b
+    S3 16 13 8 13 SMOD2a
+    S4 16 2 8 13 SMOD2b
+    Egs2 13 8 2 8 1
+    Eds1 14 8 3 8 1
+    LD 3 31 1.3E-9
+    LG 4 41 1.2E-9
+    LS 5 51 1.2E-9
+    .MODEL MOSMOD PMOS VTO=-1.26 IS=1E-15 KP=30.5 PB=1 LAMBDA=4.9E-2
+    .MODEL MOSMODS PMOS VTO=-.75 IS=1E-15 KP=0.15 PB=1
+    .MODEL DMOD1 D IS=2.5E-11 RS=0.005 N=1.01 IKF=.2 TT=1e-8 BV=25 CJO=5400E-12 
+    .MODEL SMOD1a VSWITCH RON=1e-2 ROFF=1e4  VON=-0.75 VOFF=1.75
+    .MODEL SMOD1b VSWITCH RON=1e-2 ROFF=1e4  VON=1.75 VOFF=-0.75
+    .MODEL SMOD2a VSWITCH RON=1e-2 ROFF=1e4  VON=-1.5 VOFF=-4.5
+    .MODEL SMOD2b VSWITCH RON=1e-2 ROFF=1e4  VON=-4.5 VOFF=-1.5
+    .MODEL RDSMOD RES (TC1=3E-3 TC2=3E-6)
+    .MODEL RMOD2 RES (TC1=1.195E-3 TC2=3E-6)
+    .ENDS
+    *
+    *$
+    *
+
+=========================================================================================================
+
+[DMG9933USD]
+*---------- DMG9933USD Spice Model ----------
+.SUBCKT DMG9933USD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.06732 
+RS 30 3 0.001 
+RG 20 2 44.9 
+CGS 2 3 5.341E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 6.75E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.391E+005  KP = 20.82  ETA = 0.005556 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.5405  VTO = -0.9485 
+.MODEL DCGD D  CJO = 3.766E-010  VJ = 0.2194  M = 0.4355 
+.MODEL DSUB D  IS = 8.7E-009  N = 1.353  RS = 0.08758  BV = 25  CJO = 1E-012  VJ = 0.3188  M = 0.5753 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG9933USD Spice Model v1.0 Last Revised 2011/2/11
+
+=========================================================================================================
+
+[DMP210DUFB4]
+*---------- DMP210DUFB4 Spice Model ----------
+.SUBCKT DMP210DUFB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 1.438 
+RS 30 3 0.001 
+RG 20 2 8.6 
+CGS 2 3 1.209E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 2E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 8E+005  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 0.1751  KAPPA = 29.86  VTO = -0.7543 
+.MODEL DCGD D  CJO = 7.994E-012  VJ = 0.6297  M = 0.3605 
+.MODEL DSUB D  IS = 3.261E-007  N = 2.5  RS = 0.4415  BV = 22  CJO = 3.868E-012  VJ = 1  M = 0.3722 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP210DUFB4 Spice Model v1.0 Last Revised 2012/4/27
+
+=========================================================================================================
+
+[DMP21D0UFB]
+*---------- DMP21D0UFB Spice Model ----------
+.SUBCKT DMP21D0UFB 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.2 
+RS 30 3 0.001 
+RG 20 2 500 
+CGS 2 3 7.5E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9.5E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 2.857  KAPPA = 9.123  VTO = -0.8248 
+.MODEL DCGD D  CJO = 3.857E-011  VJ = 0.2478  M = 0.3502 
+.MODEL DSUB D  IS = 9.827E-009  N = 1.492  RS = 0.8393  BV = 25  CJO = 1.95E-011  VJ = 0.2986  M = 0.379 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D0UFB Spice Model v1.0 Last Revised 2012/1/13
+
+=========================================================================================================
+
+[DMP21D0UFB4]
+*---------- DMP21D0UFB4 Spice Model ----------
+.SUBCKT DMP21D0UFB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.2 
+RS 30 3 0.001 
+RG 20 2 500 
+CGS 2 3 7.5E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9.5E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 2.857  KAPPA = 9.123  VTO = -0.8248 
+.MODEL DCGD D  CJO = 3.857E-011  VJ = 0.2478  M = 0.3502 
+.MODEL DSUB D  IS = 9.827E-009  N = 1.492  RS = 0.8393  BV = 25  CJO = 1.95E-011  VJ = 0.2986  M = 0.379 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D0UFB4 Spice Model v1.0 Last Revised 2012/1/13
+
+=========================================================================================================
+
+[DMP2018LFK]
+*---------- DMP2018LFK Spice Model ----------
+.SUBCKT DMP2018LFK 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.009515 
+RS 30 3 0.001 
+RG 20 2 6.2 
+DESD1 2 5 DESD 
+DESD2 3 5 DESD 
+CGS 2 3 4.617E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5.9E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 TOX = 6E-008 
++ NSUB = 1E+016 KP = 136 KAPPA = 1E-012 VTO = -0.8589 
+.MODEL DCGD D CJO = 1.71E-009 VJ = 0.07406 M = 0.3216 
+.MODEL DSUB D IS = 7.934E-009 N = 1.159 RS = 0.01941 BV = 40 CJO = 1.805E-009 
++ VJ = 0.2466 M = 0.3518 
+.MODEL DLIM D IS = 0.0001 
+.MODEL DESD D IS = 1.845E-008 N = 59.86 BV = 2.273 
+.ENDS
+*Diodes DMP2018LFK Spice Model v1.0 Last Revised 2012/9/4
+
+=========================================================================================================
+
+[DMP1245UFCL]
+*---------- DMP1245UFCL Spice Model ----------
+.SUBCKT DMP1245UFCL 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02066 
+RS 30 3 0.001 
+RG 20 2 14.26 
+CGS 2 3 1.165E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.55E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 44.55 KAPPA = 19.32 VTO = -0.7381 
+.MODEL DCGD D CJO = 1E-009 VJ = 0.7735 M = 0.4895 
+.MODEL DSUB D IS = 3.352E-008 N = 1.222 RS = 0.08392 BV = 10 CJO = 8.153E-010 VJ = 0.8984 M = 0.5258 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1245UFCL Spice Model v1.0 Last Revised 2015/9/15
+
+=========================================================================================================
+
+[DMP21D0UFD]
+*---------- DMP21D0UFD Spice Model ----------
+.SUBCKT DMP21D0UFD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.2 
+RS 30 3 0.001 
+RG 20 2 500 
+CGS 2 3 7.5E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9.5E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 2.857  KAPPA = 9.123  VTO = -0.8248 
+.MODEL DCGD D  CJO = 3.857E-011  VJ = 0.2478  M = 0.3502 
+.MODEL DSUB D  IS = 9.827E-009  N = 1.492  RS = 0.8393  BV = 25  CJO = 1.95E-011  VJ = 0.2986  M = 0.379 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D0UFD Spice Model v1.0 Last Revised 2012/1/13
+
+=========================================================================================================
+
+[DMP1022UFDE]
+*---------- DMP1022UFDE Spice Model ----------
+.SUBCKT DMP1022UFDE 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.007221 
+RS 30 3 0.001 
+RG 20 2 8.6 
+CGS 2 3 2.328E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 TOX = 6E-008 
++ NSUB = 1E+016 KP = 74.03 KAPPA = 52.83 VTO = -0.8598 
+.MODEL DCGD D CJO = 1.939E-009 VJ = 0.5312 M = 0.4755 
+.MODEL DSUB D IS = 6.822E-009 N = 1.158 RS = 0.03057 BV = 15 CJO = 3.094E-010 VJ = 0.5406 M = 0.6337 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1022UFDE Spice Model v1.0 Last Revised 2012/4/16
+
+=========================================================================================================
+
+[DMP21D0UT]
+*---------- DMP21D0UT Spice Model ----------
+.SUBCKT DMP21D0UT 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.2 
+RS 30 3 0.001 
+RG 20 2 500 
+CGS 2 3 7.5E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9.5E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 2.857  KAPPA = 9.123  VTO = -0.8248 
+.MODEL DCGD D  CJO = 3.857E-011  VJ = 0.2478  M = 0.3502 
+.MODEL DSUB D  IS = 9.827E-009  N = 1.492  RS = 0.8393  BV = 25  CJO = 1.95E-011  VJ = 0.2986  M = 0.379 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D0UT Spice Model v1.0 Last Revised 2012/1/13
+
+=========================================================================================================
+
+[DMP2066UFDE]
+*---------- DMP2066UFDE Spice Model ----------
+.SUBCKT DMP2066UFDE 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02066 
+RS 30 3 0.001 
+RG 20 2 10.4 
+CGS 2 3 1.463E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.36E-009 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 42.59  KAPPA = 49.86  VTO = -0.9435 
+.MODEL DCGD D  CJO = 5.044E-010  VJ = 0.2  M = 0.3439 
+.MODEL DSUB D  IS = 1E-006  N = 1.73  RS = 0.08493  BV = 25  CJO = 9.596E-011  VJ = 0.2  M = 0.4531 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2066UFDE Spice Model v1.0 Last Revised 2013/4/30
+
+=========================================================================================================
+
+[DMP21D5UFB4]
+*---------- DMP21D5UFB4 Spice Model ----------
+.SUBCKT DMP21D5UFB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D5UFB4 Spice Model v1.0 Last Revised 2011/10/27
+
+=========================================================================================================
+
+[DMP22D4UFA]
+*---------- DMP22D4UFA Spice Model ----------
+.SUBCKT DMP22D4UFA 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.6562 
+RS 30 3 0.001 
+RG 20 2 400 
+CGS 2 3 2.653E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5.8E-011 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 0.6965 KAPPA = 32.11 VTO = -0.6305 
+.MODEL DCGD D CJO = 1.549E-011 VJ = 0.1652 M = 0.3749 
+.MODEL DSUB D IS = 3.478E-007 N = 2.097 RS = 3.705 
++ BV = 25 CJO = 3.247E-012 VJ = 1.719E-014 M = 0.02141 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMP22D4UFA Spice Model v1.0 Last Revised 2012/11/30
+
+=========================================================================================================
+
+[DMP21D5UFD]
+*---------- DMP21D5UFD Spice Model ----------
+.SUBCKT DMP21D5UFD 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.4041 
+RS 30 3 0.001 
+RG 20 2 14.3 
+CGS 2 3 4.178E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.7E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 1.095  KAPPA = 49.86  VTO = -0.8823 
+.MODEL DCGD D  CJO = 1.311E-011  VJ = 0.2302  M = 0.2576 
+.MODEL DSUB D  IS = 3E-009  N = 1.688  RS = 0.5  BV = 25  CJO = 6.498E-012  VJ = 0.3007  M = 0.2934 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP21D5UFD Spice Model v1.0 Last Revised 2012/11/28
+
+=========================================================================================================
+
+[DMP1080UCB4]
+*---------- DMP1080UCB4 Spice Model ----------
+.SUBCKT DMP1080UCB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.03 
+RS 30 3 0.001 
+RG 20 2 8.92 
+CGS 2 3 1.587E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.2E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 12.39 KAPPA = 52.83 VTO = -0.7353 
+.MODEL DCGD D CJO = 1.382E-010 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 1.164E-009 N = 1.16 RS = 0.1428 BV = 10 CJO = 1.849E-010 VJ = 0.8 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1080UCB4 Spice Model v1.0 Last Revised 2015/11/11
+
+=========================================================================================================
+
+[DMP2033UCB9]
+*---------- DMP2033UCB9 Spice Model ----------
+.SUBCKT DMP2033UCB9 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02422 
+RS 30 3 0.001 
+RG 20 2 10.37 
+CGS 2 3 4.809E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 4.5E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 53.62 KAPPA = 19.32 VTO = -0.8014 
+.MODEL DCGD D CJO = 3.182E-010 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 4.143E-009 N = 1.198 RS = 0.03934 BV = 20 CJO = 3.658E-010 VJ = 0.8 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2033UCB9 Spice Model v1.0 Last Revised 2015/11/11
+
+=========================================================================================================
+
+[DMP1045UFY4]
+*---------- DMP1045UFY4 Spice Model ----------
+.SUBCKT DMP1045UFY4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01808 
+RS 30 3 0.001 
+RG 20 2 13.4 
+CGS 2 3 1.058E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 9.1E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 35.11 KAPPA = 19.32 VTO = -0.7328 
+.MODEL DCGD D CJO = 1E-009 VJ = 0.587 M = 0.4707 
+.MODEL DSUB D IS = 1.513E-008 N = 1.192 RS = 0.09064 
++ BV = 40 CJO = 1.315E-010 VJ = 0.6767 M = 0.9842 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1045UFY4 Spice Model v1.0 Last Revised 2012/11/28
+
+=========================================================================================================
+
+[DMP2100U]
+*---------- DMP2100U Spice Model ----------
+.SUBCKT DMP2100U 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.0317 
+RS 30 3 0.001 
+RG 20 2 251 
+CGS 2 3 9.65E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 9E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 2.464E+005  KP = 25.76  ETA = 0.005087 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.7287  VTO = -0.7669 
+.MODEL DCGD D  CJO = 4.12E-010  VJ = 0.1028  M = 0.3062 
+.MODEL DSUB D  IS = 2.605E-008  N = 1.315  RS = 0.07863  BV = 20  CJO = 2.196E-010  VJ = 0.2994  M = 0.4305 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2100U Spice Model v1.0 Last Revised 2013/1/18
+
+=========================================================================================================
+
+[DMP2008UFG]
+*DIODES_INC_SPICE_MODEL DMP2008UFG 
+*SIMULATOR=SIMETRIX
+*ORIGIN=DZSL_DPG_SU
+*DATE=23Jul2013
+*VERSION=1
+
+
+
+** Imported from: C:UserssuppuluriDesktopDMP2008UFG.txt
+.SUBCKT DMP2008UFG 10 20 30 
+M1 1 2 3 3  Pmod1
+RD 10 1 Rmod1 1E-3
+RS 23 3 Rmod1 5E-3
+RG 20 22 6
+RIN 20 23 2E11
+RDS 10 23 6E9
+CGS 2 3 6500E-12 
+EGD 12 0 1 2 1 
+VFB 14 0 0 
+FFB 1 2  VFB 1 
+CGD 13 14 10500E-12 
+R1 13 0 1 
+D1 12 13  DLIM 
+DDG 15 14  DCGD 
+R2 12 15 1 
+D2 15 0  DLIM 
+DSD 10 23  DSUB
+EL 2 22 1 3 0.000017
+Rta 30 23 1E-20
+*LS  30 23  4n
+.MODEL Pmod1 PMOS (LEVEL=3 VTO=-.8 TOX=20E-9 NSUB=1E+16 KP=200 NFS=.18E+12 IS=1E-15 N=10)
+.MODEL DCGD D (CJO = 1000E-12  VJ = 0.5  M = 0.43)
+.MODEL DSUB D (IS = 15E-10 N=1 RS=0.01 BV=20 CJO=1000p VJ=.45 M=0.5 TT=3E-9)
+.MODEL DLIM D (IS=100U N=1)
+.MODEL Rmod1 RES (TC1=3.9e-6 TC2=6E-6)
+.ENDS
+
+.SIMULATOR DEFAULT
+
+
+*                (c)  2013 Diodes Inc
+*
+*   The copyright in these models  and  the designs embodied belong
+*   to Diodes Incorporated (" Zetex ").  They  are  supplied
+*   free of charge by Zetex for the purpose of research and design
+*   and may be used or copied intact  (including this notice)  for
+*   that purpose only.  All other rights are reserved.  The models
+*   are believed accurate but no condition  or warranty  as to their
+*   merchantability or fitness for purpose is given and no liability
+*   in respect of any use is accepted by Diodes Incorporated, its distributors
+*   or agents.
+*
+*   Diodes Zetex Semiconductors Ltd, Zetex Technology Park, Chadderton,
+*   Oldham, United Kingdom, OL9 9LL
+*
+
+=========================================================================================================
+
+[DMG2305UX]
+*---------- DMG2305UX Spice Model ----------
+.SUBCKT DMG2305UX 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02969 
+RS 30 3 0.001 
+RG 20 2 15.2 
+CGS 2 3 7.613E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.28E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 26.49 KAPPA = 65.74 VTO = -0.8201 
+.MODEL DCGD D CJO = 5.79E-010 VJ = 0.2973 M = 0.5774 
+.MODEL DSUB D IS = 3.162E-009 N = 1.241 RS = 0.08353 BV = 1E+006 CJO = 5.653E-011 VJ = 0.008286 M = 0.1128 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMG2305UX Spice Model v1.0 Last Revised 2013/10/22
+
+=========================================================================================================
+
+[DMP2006UFG]
+*---------- DMP2006UFG Spice Model ----------
+.SUBCKT DMP2006UFG 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.001238 
+RS 30 3 0.001 
+RG 20 2 3.74 
+CGS 2 3 5.072E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 5E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 4.441E-010 
++ TOX = 6E-008 NSUB = 1E+016 KP = 175.7 KAPPA = 109 VTO = -0.848 
+.MODEL DCGD D CJO = 5.158E-009 VJ = 0.1101 M = 0.4567 
+.MODEL DSUB D IS = 4.484E-008 N = 1.181 RS = 0.006778 
++ BV = 30 CJO = 6.249E-010 VJ = 0.1841 M = 0.4836 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2006UFG Spice Model v1.0 Last Revised 2014/09/10
+
+
+=========================================================================================================
+
+[DMG302PU]
+*---------- DMG302PU Spice Model ----------
+.SUBCKT DMG302PU 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 2.093 
+RS 30 3 0.001 
+RG 20 2 1970 
+CGS 2 3 2.534E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 5.5E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 0.4462  KAPPA = 49.86  VTO = -0.8635 
+.MODEL DCGD D  CJO = 4.312E-012  VJ = 0.1388  M = 0.2172 
+.MODEL DSUB D  IS = 3.518E-010  N = 1.34  RS = 0.5434  BV = 40  CJO = 1.22E-011  VJ = 0.6489  M = 0.363 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG302PU Spice Model v1.0 Last Revised 2015/3/16
+
+=========================================================================================================
+
+[DMG1013T]
+*SYM=POWMOSP
+.SUBCKT DMG1013T   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  PMOS L=0.6U W=47.66m
+RD  10  1  300m
+RS  30  3  85m
+RG  20  2  1
+CGS  2  3  57.55p
+EGD 12  30  2  1  1
+VFB 14  30  0
+FFB  2  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+.MODEL PMOS PMOS LEVEL=3 U0=200 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=20n NSUB=2.1e16
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.320
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20.0
++ CJO=20p VJ=0.600 M=0.50
+.MODEL DLIM D IS=100U
+.ENDS
+
+=========================================================================================================
+
+[DMP1012UCB9]
+*---------- DMP1012UCB9 Spice Model ----------
+.SUBCKT DMP1012UCB9 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.003332 
+RS 30 3 0.001 
+RG 20 2 2.6 
+CGS 2 3 4.721E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 7.15E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 107.4  KAPPA = 49.86  VTO = -0.954 
+.MODEL DCGD D  CJO = 3.351E-010  VJ = 0.2  M = 0.1104 
+.MODEL DSUB D  IS = 2.487E-010  N = 1.095  RS = 0.01511  BV = 20  CJO = 5.861E-010  VJ = 0.6  M = 0.2823 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP1012UCB9 Spice Model v1.0 Last Revised 2015/4/27
+
+=========================================================================================================
+
+[DMP1011UCB9]
+*---------- DMP1011UCB9 Spice Model ----------
+.SUBCKT DMP1011UCB9 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.003332 
+RS 30 3 0.001 
+RG 20 2 2.6 
+CGS 2 3 4.721E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 7.15E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 107.4  KAPPA = 49.86  VTO = -0.954 
+.MODEL DCGD D  CJO = 3.351E-010  VJ = 0.2  M = 0.1104 
+.MODEL DSUB D  IS = 2.487E-010  N = 1.095  RS = 0.01511  BV = 20  CJO = 5.861E-010  VJ = 0.6  M = 0.2823 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP1011UCB9 Spice Model v1.0 Last Revised 2015/6/30
+
+=========================================================================================================
+
+[DMP1022UFDF]
+*---------- DMP1022UFDF Spice Model ----------
+.SUBCKT DMP1022UFDF 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.007221 
+RS 30 3 0.001 
+RG 20 2 8.6 
+CGS 2 3 2.328E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 TOX = 6E-008 
++ NSUB = 1E+016 KP = 74.03 KAPPA = 52.83 VTO = -0.8598 
+.MODEL DCGD D CJO = 1.939E-009 VJ = 0.5312 M = 0.4755 
+.MODEL DSUB D IS = 6.822E-009 N = 1.158 RS = 0.03057 BV = 15 CJO = 3.094E-010 VJ = 0.5406 M = 0.6337 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1022UFDF Spice Model v1.0 Last Revised 2015/9/21
+
+=========================================================================================================
+
+[DMP2021UFDF]
+*---------- DMP2021UFDF Spice Model ----------
+.SUBCKT DMP2021UFDF 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.006917 
+RS 30 3 0.001 
+RG 20 2 12.02 
+CGS 2 3 2.686E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.8E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 91.34 KAPPA = 19.32 VTO = -0.7199 
+.MODEL DCGD D CJO = 1.478E-009 VJ = 0.6094 M = 0.6 
+.MODEL DSUB D IS = 2.978E-008 N = 1.118 RS = 0.03405 BV = 20 CJO = 3.453E-010 VJ = 0.6 M = 0.6726 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2021UFDF Spice Model v1.0 Last Revised 2015/8/18
+
+=========================================================================================================
+
+[DMP2035UFCL]
+*---------- DMP2035UFCL Spice Model ----------
+.SUBCKT DMP2035UFCL 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01433 
+RS 30 3 0.001 
+RG 20 2 11.12 
+CGS 2 3 1.682E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.58E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 56.81 KAPPA = 19.32 VTO = -0.8663 
+.MODEL DCGD D CJO = 9.774E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 9.271E-009 N = 1.204 RS = 0.03691 BV = 20 CJO = 6.425E-011 VJ = 0.6 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2035UFCL Spice Model v1.0 Last Revised 2015/9/23
+
+
+=========================================================================================================
+
+[DMP2200UDW]
+*---------- DMP2200UDW Spice Model ----------
+.SUBCKT DMP2200UDW 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.1222 
+RS 30 3 0.001 
+RG 20 2 65 
+CGS 2 3 1.384E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 2.6E-010 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1E+006  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 4.902  KAPPA = 49.86  VTO = -0.8622 
+.MODEL DCGD D  CJO = 1.261E-010  VJ = 0.4  M = 0.4131 
+.MODEL DSUB D  IS = 1.448E-009  N = 1.239  RS = 0.437  BV = 30  CJO = 1E-012  VJ = 0.2  M = 0.7859 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2200UDW Spice Model v1.0 Last Revised 2015/5/6
+
+=========================================================================================================
+
+[DMG1013UWQ]
+*SYM=POWMOSP
+.SUBCKT DMG1013UWQ   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  20  3  3  PMOS L=0.6U W=47.66m
+RD  10  1  300m
+RS  30  3  85m
+CGS  20  3  57.55p
+EGD 12  30  20  1  1
+VFB 14  30  0
+FFB  20  1  VFB  1
+CGD 13 14  22.2p
+R1  13  30  1.00
+D1  13 12  DLIM
+DDG 14 15  DCGD
+R2  12 15  1.00
+D2  30  15  DLIM
+DSD 10  3  DSUB
+.MODEL PMOS PMOS LEVEL=3 U0=200 VMAX=40k
++ ETA=0.1m VTO=-0.952 TOX=20n NSUB=2.1e16
+.MODEL DCGD D CJO=22.2p VJ=0.150 M=0.320
+.MODEL DSUB D IS=36.1n N=1.50 RS=21.8m BV=20.0
++ CJO=20p VJ=0.600 M=0.50
+.MODEL DLIM D IS=100U
+.ENDS
+
+*Diodes DMG1013UWQ  Spice Model v1.0 Last Revised 2016/01/13
+
+=========================================================================================================
+
+[DMP2022LSSQ]
+*---------- DMP2022LSSQ Spice Model ----------
+.SUBCKT DMP2022LSSQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.006258 
+RS 30 3 0.001 
+RG 20 2 10.89 
+CGS 2 3 2.508E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 102.8 KAPPA = 19.32 VTO = -1.375 
+.MODEL DCGD D CJO = 1E-009 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 3.189E-010 N = 1.132 RS = 0.01069 BV = 20 CJO = 6.012E-010 VJ = 0.6 M = 0.6 TT=2.423E-08
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2022LSSQ Spice Model v1.0 Last Revised 2016/1/22
+
+=========================================================================================================
+
+[DMP2038USS]
+*---------- DMP2038USS Spice Model ----------
+.SUBCKT DMP2038USS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02073 
+RS 30 3 0.001 
+RG 20 2 10.39 
+CGS 2 3 1.384E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.3E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 44.98 KAPPA = 19.32 VTO = -0.9359 
+.MODEL DCGD D CJO = 7.175E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 6.359E-007 N = 1.663 RS = 0.09391 BV = 20 CJO = 1.769E-012 VJ = 0.8 M = 0.6  
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2038USS Spice Model v1.0M Last Revised 2016/1/27
+
+=========================================================================================================
+
+[DMG3415UFY4Q]
+*---------- DMG3415UFY4Q Spice Model ----------
+.SUBCKT DMG3415UFY4Q 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02849 
+RS 30 3 0.001 
+RG 20 2 251 
+CGS 2 3 9.685E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.25E-009 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 1.206E+005  KP = 26.84  ETA = 0.004426 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 0.2906  VTO = -0.7669 
+.MODEL DCGD D  CJO = 6.481E-010  VJ = 0.4221  M = 0.4512 
+.MODEL DSUB D  IS = 2.605E-008  N = 1.315  RS = 0.07863  BV = 20  CJO = 1.057E-010  VJ = 0.008444  M = 0.2401 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMG3415UFY4Q Spice Model v1.0M Last Revised 2016/1/27
+
+=========================================================================================================
+
+[DMP2035UTS]
+*---------- DMP2035UTS Spice Model ----------
+.SUBCKT DMP2035UTS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 0.02108 
+RS 30 3 0.001 
+RG 20 2 9.45 
+CGS 2 3 1.503E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 1.47E-009 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 8.718E+005  KP = 43.38  ETA = 0.0009338 
++ TOX = 6E-008  NSUB = 1E+016  KAPPA = 7.975  VTO = -0.784 
+.MODEL DCGD D  CJO = 6.223E-010  VJ = 0.1355  M = 0.3364 
+.MODEL DSUB D  IS = 2.917E-008  N = 1.315  RS = 0.04378  BV = 25  CJO = 6.786E-012  VJ = 1  M = 0.001 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP2035UTS Spice Model v1.0 Last Revised 2011/2/11
+
+=========================================================================================================
+
+[DMP210DUDJ]
+*---------- DMP210DUDJ Spice Model ----------
+.SUBCKT DMP210DUDJ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3  PMOS  L = 1E-006  W = 1E-006 
+RD 10 1 1.438 
+RS 30 3 0.001 
+RG 20 2 8.6 
+CGS 2 3 1.209E-011 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1  VFB 1 
+CGD 13 14 2E-011 
+R1 13 30 1 
+D1 13 12  DLIM 
+DDG 14 15  DCGD 
+R2 12 15 1 
+D2 30 15  DLIM 
+DSD 10 3  DSUB 
+.MODEL PMOS PMOS  LEVEL = 3  U0 = 400  VMAX = 8E+005  ETA = 0.001 
++ TOX = 6E-008  NSUB = 1E+016  KP = 0.1751  KAPPA = 29.86  VTO = -0.7543 
+.MODEL DCGD D  CJO = 7.994E-012  VJ = 0.6297  M = 0.3605 
+.MODEL DSUB D  IS = 3.261E-007  N = 2.5  RS = 0.4415  BV = 22  CJO = 3.868E-012  VJ = 1  M = 0.3722 
+.MODEL DLIM D  IS = 0.0001 
+.ENDS
+*Diodes DMP210DUDJ Spice Model v1.0 Last Revised 2012/4/27
+
+=========================================================================================================
+
+[DMP1081UCB4]
+*---------- DMP1081UCB4 Spice Model ----------
+.SUBCKT DMP1081UCB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.03 
+RS 30 3 0.001 
+RG 20 2 8.92 
+CGS 2 3 1.587E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.2E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 12.39 KAPPA = 52.83 VTO = -0.7353 
+.MODEL DCGD D CJO = 1.382E-010 VJ = 0.8 M = 0.6 
+.MODEL DSUB D IS = 1.164E-009 N = 1.16 RS = 0.1428 BV = 10 CJO = 1.849E-010 VJ = 0.8 M = 0.6 TT=6.73E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1081UCB4 Spice Model v1.0M Last Revised 2016/3/3
+
+=========================================================================================================
+
+[DMP1100UCB4]
+*---------- DMP1100UCB4 Spice Model ----------
+.SUBCKT DMP1100UCB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.05127 
+RS 30 3 0.001 
+RG 20 2 11.18 
+CGS 2 3 4.722E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.17E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 22.5 KAPPA = 52.83 VTO = -0.7673 
+.MODEL DCGD D CJO = 7.698E-010 VJ = 0.7898 M = 0.6 
+.MODEL DSUB D IS = 3.826E-009 N = 1.106 RS = 0.2748 BV = 12.8 CJO = 3.949E-011 VJ = 0.7021 M = 0.6 TT=8E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP1100UCB4 Spice Model v1.0M Last Revised 2016/4/12
+
+=========================================================================================================
+
+[DMG2301LK]
+*---------- DMG2301LK Spice Model ----------
+.SUBCKT DMG2301LK 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.08416 
+RS 30 3 0.001 
+RG 20 2 40.9 
+CGS 2 3 1.265E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.85E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 6.629 KAPPA = 19.32 VTO = -0.6459 
+.MODEL DCGD D CJO = 1.177E-010 VJ = 0.611 M = 0.6 
+.MODEL DSUB D IS = 0.0001419 N = 4.041 RS = 7.253E-009 BV = 22 CJO = 2.853E-011 VJ = 0.7195 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMG2301LK Spice Model v1.0M Last Revised 2016/4/28
+
+=========================================================================================================
+
+[DMP2022LSS]
+*SRC=DMP2022LSS;DI_DMP2022LSS;MOSFETs P;Enh;20.0V 10.0A 13.0ohms  Diodes Inc. MOSFET
+*SYM=POWMOSP
+.SUBCKT DI_DMP2022LSS   10 20 30
+*     TERMINALS:  D  G  S
+M1   1  2  3  3  DMOS L=1U W=1U
+RD  10  1  6.17
+RS  40  3  0.326
+RG  20  2  15.0
+CGS  2  3  2.33n
+EGD 12  0  2  1  1
+VFB 14  0  0
+FFB  2  1  VFB  1
+CGD 13 14  754p
+R1  13  0  1.00
+D1  12 13  DLIM
+DDG 15 14  DCGD
+R2  12 15  1.00
+D2  15  0  DLIM
+DSD  3 10  DSUB
+LS  30 40  7.50n
+.MODEL DMOS PMOS(LEVEL=3 VMAX=41.7k THETA=80.0m
++ ETA=2.40m VTO=-1.10 KP=1.95Meg
+.MODEL DCGD D (CJO=754p VJ=0.600 M=0.680
+.MODEL DSUB D (IS=41.5n N=1.50 RS=45.0m BV=20.0
++ CJO=1.45n VJ=0.800 M=0.420 TT=297n
+.MODEL DLIM D (IS=100U)
+.ENDS
+
+=========================================================================================================
+
+[DMP2170U]
+*---------- DMP2170U Spice Model ----------
+.SUBCKT DMP2170U 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.03401 
+RS 30 3 0.001 
+RG 20 2 16.19 
+CGS 2 3 2.663E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 4.5E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 13.29 KAPPA = 19.32 VTO = -1.265 
+.MODEL DCGD D CJO = 2.367E-010 VJ = 0.1307 M = 0.4276 
+.MODEL DSUB D IS = 8.156E-010 N = 1.261 RS = 0.05931 BV = 27 CJO = 5.561E-011 VJ = 0.1742 M = 0.4317 TT=2.7E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2170U Spice Model v1.0M Last Revised 2016/6/15
+
+=========================================================================================================
+
+[DMP2042UCB4]
+*---------- DMP2042UCB4 Spice Model ----------
+.SUBCKT DMP2042UCB4 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02838 
+RS 30 3 0.001
+RC 20 5 5000 
+RG 5 2 23
+DDIO 5 3 LEGD2
+DDIO2 20 3 LEGD
+CGS 2 3 3.6E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.5E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 24.1 KAPPA = 19.32 VTO = -0.8036 
+.MODEL DCGD D CJO = 3.548E-011 VJ = 0.6001 M = 0.8 
+.MODEL DSUB D IS = 4.84E-009 N = 1.313 RS = 0.0601 BV = 21.3 CJO = 4.2E-010 VJ = 0.8 M = 0.6 TT = 2.3E-007
+.MODEL DLIM D IS = 0.0001 
+.MODEL LEGD D IS = 5E-009  N = 1.089  RS = 0.004  BV = 22
+.MODEL LEGD2 D IS = 5E-009  N = 1.089  RS = 0.004  BV = 7 
+.ENDS
+*Diodes DMP2042UCB4 Spice Model v1.0M Last Revised 2016/7/7
+
+=========================================================================================================
+
+[DMG1013TQ]
+*---------- DMG1013TQ Spice Model ----------
+.SUBCKT DMG1013TQ 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 NMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.2935 
+RS 30 3 0.001 
+RG 20 2 161.7 
+CGS 2 3 5.5E-011 
+EGD 12 0 2 1 1 
+VFB 14 0 0 
+FFB 2 1 VFB 1 
+CGD 13 14 8.5E-011 
+R1 13 0 1 
+D1 12 13 DLIM 
+DDG 15 14 DCGD 
+R2 12 15 1 
+D2 15 0 DLIM 
+DSD 3 10 DSUB 
+.MODEL NMOS NMOS LEVEL = 3 VMAX = 5.378E+005 ETA = 0.001 VTO = 0.8938 
++ TOX = 6E-008 NSUB = 1E+016 KP = 1.666 U0 = 400 KAPPA = 10 
+.MODEL DCGD D CJO = 3.045E-011 VJ = 0.7992 M = 0.6 
+.MODEL DSUB D IS = 5.645E-009 N = 1.473 RS = 0.9179 BV = 23.7 CJO = 2.5E-011 VJ = 0.7186 M = 0.6022 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMG1013TQ Spice Model v1.0M Last Revised 2016/8/3
+
+
+=========================================================================================================
+
+[DMP2021UFDE]
+*---------- DMP2021UFDE Spice Model ----------
+.SUBCKT DMP2021UFDE 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.006917 
+RS 30 3 0.001 
+RG 20 2 12.02 
+CGS 2 3 2.686E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 3.8E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 91.34 KAPPA = 19.32 VTO = -0.7199 
+.MODEL DCGD D CJO = 1.478E-009 VJ = 0.6094 M = 0.6 
+.MODEL DSUB D IS = 2.978E-008 N = 1.118 RS = 0.03405 BV = 20 CJO = 3.453E-010 VJ = 0.6 M = 0.6726 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2021UFDE Spice Model v1.0 Last Revised 2015/8/18
+
+
+=========================================================================================================
+
+[DMP2035UFDF]
+*---------- DMP2035UFDF Spice Model ----------
+.SUBCKT DMP2035UFDF 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01433 
+RS 30 3 0.001 
+RG 20 2 11.12 
+CGS 2 3 1.682E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.58E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 56.81 KAPPA = 19.32 VTO = -0.8663 
+.MODEL DCGD D CJO = 9.774E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 9.271E-009 N = 1.204 RS = 0.03691 BV = 20 CJO = 6.425E-011 VJ = 0.6 M = 0.6 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2035UFDF Spice Model v1.0 Last Revised 2015/9/23
+
+
+=========================================================================================================
+
+[DMP2040UFDF]
+*---------- DMP2040UFDF Spice Model ----------
+.SUBCKT DMP2040UFDF 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.01579 
+RS 30 3 0.001 
+RG 20 2 4.88 
+CGS 2 3 7.293E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 39.52 KAPPA = 19.32 VTO = -1.151 
+.MODEL DCGD D CJO = 5.814E-010 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 3.068E-009 N = 1.23 RS = 0.03607 BV = 20 CJO = 1.832E-010 VJ = 0.6 M = 0.6244 TT=9.8E-09
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+
+*Diodes DMP2040UFDF Spice Model v1.0 Last Revised 2015/12/9
+
+
+=========================================================================================================
+
+[DMP2065UFDB]
+*---------- DMP2065UFDB Spice Model ----------
+.SUBCKT DMP2065UFDB 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.02969 
+RS 30 3 0.001 
+RG 20 2 15.2 
+CGS 2 3 7.613E-010 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.28E-009 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 26.49 KAPPA = 65.74 VTO = -0.8201 
+.MODEL DCGD D CJO = 5.79E-010 VJ = 0.2973 M = 0.5774 
+.MODEL DSUB D IS = 3.162E-009 N = 1.241 RS = 0.08353 BV = 1E+006 CJO = 5.653E-011 VJ = 0.008286 M = 0.1128 
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2065UFDB Spice Model v1.0 Last Revised 2013/10/22
+
+=========================================================================================================
+
+[DMP2088LCP3]
+*---------- DMP2088LCP3 Spice Model ----------
+.SUBCKT DMP2088LCP3 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.054 
+RS 30 3 0.001 
+RG 20 2 17.94 
+CGS 2 3 1.138E-010 
+DDIO 2 3 LEGD
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 1.1E-010 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 7.376 KAPPA = 19.32 VTO = -1.139 
+.MODEL DCGD D CJO = 3.616E-011 VJ = 1 M = 0.7818 
+.MODEL DSUB D IS = 5.68E-010 N = 1.345 RS = 0.05418 BV = 22.7 CJO = 1.528E-010 VJ = 1 M = 0.3534 TT=2.8E-09
+.MODEL DLIM D IS = 0.0001 
+.MODEL LEGD D IS = 5E-009  N = 1.089  RS = 0.004  BV = 14  
+.ENDS
+*Diodes DMP2088LCP3 Spice Model v1.0M Last Revised 2016/7/6
+
+
+=========================================================================================================
+
+[DMP2002UPS]
+*---------- DMP2002UPS Spice Model ----------
+.SUBCKT DMP2002UPS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.0001 
+RS 30 3 0.001 
+RG 20 2 3.44 
+CGS 2 3 9E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 2.2E-008 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 392.9 KAPPA = 52.83 VTO = -1.469 
+.MODEL DCGD D CJO = 1.143E-008 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 2.821E-009 N = 1.184 RS = 5.952E-009 BV = 22 CJO = 1.797E-009 VJ = 0.8 M = 0.6 TT=3.6E-08
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP2002UPS Spice Model v1.0 Last Revised 2016/9/16
+
+
+=========================================================================================================
+
+[DMP22M2UPS]
+*---------- DMP22M2UPS Spice Model ----------
+.SUBCKT DMP22M2UPS 10 20 30 
+*     TERMINALS:  D  G  S
+M1 1 2 3 3 PMOS L = 1E-006 W = 1E-006 
+RD 10 1 0.0001 
+RS 30 3 0.001 
+RG 20 2 3.44 
+CGS 2 3 9E-009 
+EGD 12 30 2 1 1 
+VFB 14 30 0 
+FFB 2 1 VFB 1 
+CGD 13 14 2.2E-008 
+R1 13 30 1 
+D1 13 12 DLIM 
+DDG 14 15 DCGD 
+R2 12 15 1 
+D2 30 15 DLIM 
+DSD 10 3 DSUB 
+.MODEL PMOS PMOS LEVEL = 3 U0 = 400 VMAX = 1E+006 ETA = 0.001 
++ TOX = 6E-008 NSUB = 1E+016 KP = 392.9 KAPPA = 52.83 VTO = -1.469 
+.MODEL DCGD D CJO = 1.143E-008 VJ = 0.6 M = 0.6 
+.MODEL DSUB D IS = 2.821E-009 N = 1.184 RS = 5.952E-009 BV = 22 CJO = 1.797E-009 VJ = 0.8 M = 0.6 TT=3.6E-08
+.MODEL DLIM D IS = 0.0001 
+.ENDS
+*Diodes DMP22M2UPS Spice Model v1.0 Last Revised 2016/9/16
+
+
+=========================================================================================================
