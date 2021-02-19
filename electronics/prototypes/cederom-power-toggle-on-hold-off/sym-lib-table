@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name cederom-electronics-local)(type Legacy)(uri ${KIPRJMOD}/../../libs/kicad/symbols/CeDeROM-KiCAD-SYMBOLS.lib)(options "")(descr ""))
+  (lib (name power-toggle-on-hold-off-rescue)(type Legacy)(uri ${KIPRJMOD}/power-toggle-on-hold-off-rescue.lib)(options "")(descr ""))
+)
