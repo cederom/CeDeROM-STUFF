@@ -1,7 +1,9 @@
 CeDeROM's STUFF
 ===============
 
-Here I will store projects related stuff that may be useful for you as well. Use at your own risk, have fun! =)
+You will find some of my projects related stuff that may be useful for you as well. Use at your own risk. Have fun! =)
 
-You can also visit my website for contact and more information [http://www.tomek.cedro.info](http://www.tomek.cedro.info)
+Visit my personal website for more information: https://www.tomek.cedro.info.
+
+Visit my company website for contact and pricing: www.cederom.io.
 
