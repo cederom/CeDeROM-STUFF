@@ -2,8 +2,8 @@
 	path = electronics/libs/spice/KiCad-Spice-Library.git
 	url = https://github.com/kicad-spice-library/KiCad-Spice-Library.git
 [submodule "electronics/fpga/SpartanEdgeAcceleratorBoard/res/Demo_project.git"]
-	path = electronics/fpga/SpartanEdgeAcceleratorBoard/res/Demo_project.git
+	path = electronics/fpga/SpartanEdgeAcceleratorBoard/references/Demo_project.git
 	url = https://github.com/Pillar1989/Demo_project.git
 [submodule "electronics/fpga/SpartanEdgeAcceleratorBoard/res/spartan-edge-esp32-boot.git"]
-	path = electronics/fpga/SpartanEdgeAcceleratorBoard/res/spartan-edge-esp32-boot.git
+	path = electronics/fpga/SpartanEdgeAcceleratorBoard/references/spartan-edge-esp32-boot.git
 	url = https://github.com/Pillar1989/spartan-edge-esp32-boot.git
