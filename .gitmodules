@@ -19,3 +19,6 @@
 [submodule "embedded/RISC-V/examples/cva6"]
 	path = embedded/RISC-V/examples/cva6
 	url = https://github.com/openhwgroup/cva6.git
+[submodule "embedded/RISC-V/examples/rocket-chip"]
+	path = embedded/RISC-V/examples/rocket-chip
+	url = https://github.com/chipsalliance/rocket-chip.git
