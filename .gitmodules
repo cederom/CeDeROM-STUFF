@@ -7,3 +7,6 @@
 [submodule "electronics/fpga/SpartanEdgeAcceleratorBoard/res/spartan-edge-esp32-boot.git"]
 	path = electronics/fpga/SpartanEdgeAcceleratorBoard/references/spartan-edge-esp32-boot.git
 	url = https://github.com/Pillar1989/spartan-edge-esp32-boot.git
+[submodule "embedded/RISC-V/tutorials/LF-Building-a-RISC-V-CPU-Core"]
+	path = embedded/RISC-V/tutorials/LF-Building-a-RISC-V-CPU-Core
+	url = https://github.com/stevehoover/LF-Building-a-RISC-V-CPU-Core.git
