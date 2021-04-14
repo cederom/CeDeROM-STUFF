@@ -22,3 +22,6 @@
 [submodule "embedded/RISC-V/examples/rocket-chip"]
 	path = embedded/RISC-V/examples/rocket-chip
 	url = https://github.com/chipsalliance/rocket-chip.git
+[submodule "embedded/RISC-V/examples/xilinx-risc-v"]
+	path = embedded/RISC-V/examples/xilinx-risc-v
+	url = https://github.com/irmo-de/xilinx-risc-v.git
