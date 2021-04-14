@@ -13,3 +13,6 @@
 [submodule "embedded/RISC-V/tutorials/RISC-V_MYTH_Workshop"]
 	path = embedded/RISC-V/examples/RISC-V_MYTH_Workshop
 	url = https://github.com/stevehoover/RISC-V_MYTH_Workshop.git
+[submodule "embedded/RISC-V/examples/vivado-risc-v"]
+	path = embedded/RISC-V/examples/vivado-risc-v
+	url = https://github.com/eugene-tarassov/vivado-risc-v.git
