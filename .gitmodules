@@ -10,3 +10,6 @@
 [submodule "embedded/RISC-V/tutorials/LF-Building-a-RISC-V-CPU-Core"]
 	path = embedded/RISC-V/tutorials/LF-Building-a-RISC-V-CPU-Core
 	url = https://github.com/stevehoover/LF-Building-a-RISC-V-CPU-Core.git
+[submodule "embedded/RISC-V/tutorials/RISC-V_MYTH_Workshop"]
+	path = embedded/RISC-V/tutorials/RISC-V_MYTH_Workshop
+	url = https://github.com/stevehoover/RISC-V_MYTH_Workshop.git
