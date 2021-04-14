@@ -16,3 +16,6 @@
 [submodule "embedded/RISC-V/examples/vivado-risc-v"]
 	path = embedded/RISC-V/examples/vivado-risc-v
 	url = https://github.com/eugene-tarassov/vivado-risc-v.git
+[submodule "embedded/RISC-V/examples/cva6"]
+	path = embedded/RISC-V/examples/cva6
+	url = https://github.com/openhwgroup/cva6.git
