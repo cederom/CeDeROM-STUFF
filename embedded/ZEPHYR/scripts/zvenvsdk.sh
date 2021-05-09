@@ -4,7 +4,7 @@
 # ZEPHYR_BASE ENVIRONMENT VARIABLE CAN OVERRIDE ZEPHYR LOCATION.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20210507.2"
+VERSION="20210509.1"
 PREFIX="$HOME/usr/local"
 PYBIN="python3.7"
 PYUTILS="pip wheel west nrfutil"
@@ -54,12 +54,22 @@ python_update_venv()
 
 zephyr_find_env()
 {
- if [ $ZEPHYR_BASE ]; then
+ # THIS NEEDS TO BE RUN WITHIN PYTHON VENV ALREADY!
+ if [ -d .west ]; then
+  zephyr_local=(`west list -f "{name} {path}"|grep zephyr`)
+  if [ $? -eq 0 ]; then
+   ZEPHYR_BASE=${zephyr_local[1]}
+   echo "USING LOCAL .WEST PROVIDED ZEPHYR_BASE: $ZEPHYR_BASE"
+  fi
+ elif [ $ZEPHYR_BASE ]; then
   ZEPHYRLOC="$ZEPHYR_BASE/.."
-  echo "USING ZEPHYR_BASE FROM ENV: $ZEPHYR_BASE"
- else
+  echo "USING ENV PROVIDED ZEPHYR_BASE: $ZEPHYR_BASE"
+ elif [ -d $ZEPHYRLOC/zephyr ]; then
   ZEPHYR_BASE="$ZEPHYRLOC/zephyr"
   echo "USING DEFAULT ZEPHYR_BASE: $ZEPHYR_BASE"
+ else
+  echo "ERROR: ZEPHYR ENVIRONMENT NOT FUOND! RUN ME WITH NO PARAMETER FOR SETUP!"
+  exit 1
  fi
 }
 
@@ -79,7 +89,12 @@ zephyr_setup_env()
 
 zephyr_run_env()
 {
- source "$ZEPHYR_BASE/zephyr-env.sh"
+ if [ -e $ZEPHYR_BASE/zephyr-env.sh ]; then
+  source "$ZEPHYR_BASE/zephyr-env.sh"
+ else
+  echo "ERROR: ZEPHYR ENVIRONMENT INVALID! RUN ME WITH NO PARAMETER FOR SETUP!"
+  exit 1
+ fi
 }
 
 zephyr_update_env()
@@ -106,7 +121,8 @@ command_usage()
  echo "    init : Initialize Python and Zephyr SDK."
  echo "  update : Update Python and Zephyr SDK."
  echo " install : Install this sctipt to $PREFIX/bin."
- echo "   shell : Spawn Python VirtualEnv shell."
+ echo "   shell : Spawn Python VirtualEnv + ZephyrSDK shell."
+ echo "    venv : Spawn Python VirtualEnv shell only (no ZephyrSDK)."
  echo "   flash : Your own way to flash a Target." 
  echo "           -dfu  : (optional) generate and flash the DFU ZIP."
  echo "           fwloc : (optional) use this firmware location."
@@ -182,9 +198,16 @@ command_usage
 case $1 in
  [sS][hH][eE][lL][lL])
   python_run_venv
+  zephyr_find_env
+  zephyr_run_env
   shell_run
   exit
  ;;
+ [vV][eE][nN][vV])
+  python_run_venv
+  shell_run
+  exit
+ ;; 
  [uU][pP][dD][aA][tT][eE])
   python_run_venv
   python_update_venv
