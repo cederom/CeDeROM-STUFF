@@ -4,14 +4,19 @@
 # ZEPHYR_BASE ENVIRONMENT VARIABLE CAN OVERRIDE ZEPHYR LOCATION.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20210509.1"
+VERSION="20210714.1"
 PREFIX="$HOME/usr/local"
-PYBIN="python3.7"
-PYUTILS="pip wheel west nrfutil"
-export PYVENVLOC="$PREFIX/venv37zephyr"
+PYBIN="python3.8"
+PYUTILS="pip wheel west pyocd pyserial"
+export PYVENVLOC="$PREFIX/venv38zephyr"
 export ZEPHYRLOC="$PREFIX/zephyrproject"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH="/usr/local/gcc-arm-embedded"
+export PATH="/usr/local/bin:$PATH" # DTC binary name conflict.
+export ESPRESSIF_TOOLCHAIN_PATH="${HOME}/.espressif/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf"
+export PATH=$PATH:$ESPRESSIF_TOOLCHAIN_PATH/bin
+#ESP32 NOTE: Remember to run `west espressif install` !
+# See: https://docs.zephyrproject.org/latest/boards/xtensa/esp32/doc/index.html
 
 ###############################################################
 # FUNCTIONS DEFINITION
@@ -59,6 +64,7 @@ zephyr_find_env()
   zephyr_local=(`west list -f "{name} {path}"|grep zephyr`)
   if [ $? -eq 0 ]; then
    ZEPHYR_BASE=${zephyr_local[1]}
+   ZEPHYRLOC="$ZEPHYR_BASE/.."
    echo "USING LOCAL .WEST PROVIDED ZEPHYR_BASE: $ZEPHYR_BASE"
   fi
  elif [ $ZEPHYR_BASE ]; then
@@ -99,8 +105,10 @@ zephyr_run_env()
 
 zephyr_update_env()
 {
- zephyr_find_env
  python_run_venv
+ west update        # this is necessary if Zephyr not yet pulled
+ zephyr_find_env
+ west update
  zephyr_run_env
  west update
 }
@@ -112,6 +120,8 @@ command_usage()
  echo "================================================================"
  echo
  echo " This script quckly lands you in Python+Zephyr SDK VENV."
+ echo " Note that Zephyr SDK will now be created with west udpate, so"
+ echo " this is not created by default anymore (use init -zephyr)."
  echo " By default script sets up SDK then spawns shell."
  echo " Adjust script parameters in its source code."
  echo " Script location: $0"
@@ -119,12 +129,14 @@ command_usage()
  echo "Available commands:"
  echo "    help : Display this help."
  echo "    init : Initialize Python and Zephyr SDK."
+ echo "           -zephyr : (optional) init standalone Zephyr SDK."
  echo "  update : Update Python and Zephyr SDK."
  echo " install : Install this sctipt to $PREFIX/bin."
  echo "   shell : Spawn Python VirtualEnv + ZephyrSDK shell."
  echo "    venv : Spawn Python VirtualEnv shell only (no ZephyrSDK)."
  echo "   flash : Your own way to flash a Target." 
  echo "           -dfu  : (optional) generate and flash the DFU ZIP."
+ echo "           -pyocd: (optional) use pyOCD to flash firmware."
  echo "           fwloc : (optional) use this firmware location."
  echo "    uart : Your own way to spawn UART CLI with Target."
  echo "           port  : (optional) use this UART port." 
@@ -145,8 +157,10 @@ command_flash()
  if [ $# -ge 1 ]; then
   if [ "$2" == "-dfu" ]; then
    FLASHTYPE="DFU"
-   if [ $# -eq 3 ]; then FWLOC=$3; fi
+  elif [ "$2" == "-pyocd" ]; then
+   FLASHTYPE="PYOCD"
   elif [ $# -eq 2 ]; then FWLOC=$2; fi
+  if [ $# -eq 3 ]; then FWLOC=$3; fi
  fi
  echo "Flashing $FWLOC over $FLASHTYPE."
  # VERIFY FIRMWARE EXISTENCE.
@@ -154,13 +168,15 @@ command_flash()
   echo "Firmware not found at: $FWLOC. Ejecting!"
   exit 1
  fi
- if [ "$FLASHTYPE" == "UMS" ]; then
+ if [ "$FLASHTYPE" == "PYOCD" ]; then
+  pyocd flash $FWLOC
+ elif [ "$FLASHTYPE" == "UMS" ]; then
   if [ ! -e $MNTPT ]; then mkdir -p $MNTPT; fi
   echo "Flashing From : $FWLOC"
   echo "Flashing TO   : $UMSDEV"
   echo "Flashing Over : $MNTPT"
   mount_msdosfs $UMSDEV $MNTPT
-  cp build/zephyr/zephyr.hex $MNTPT
+  cp $FWLOC $MNTPT && sync
   umount $MNTPT
  elif [ "$FLASHTYPE" == "DFU" ]; then
   echo "CONVERTING HEX TO DFU ZIP."
@@ -219,9 +235,14 @@ case $1 in
   python_setup_venv
   python_run_venv
   python_update_venv
-  zephyr_find_env
-  zephyr_setup_env
-  zephyr_update_env
+  if [ $# -eq 2 ]; then
+   if [ $2 == "-zephyr" ]; then
+    echo "SETUP ZEPHYR HERE"
+    zephyr_find_env
+    zephyr_setup_env
+    zephyr_update_env
+   fi
+  fi
   exit
  ;;
  [iI][nN][sS][tT][aA][lL][lL])
@@ -272,6 +293,28 @@ if [ ! -e $ZEPHYRLOC ]; then
  fi
 else
  zephyr_run_env
+fi
+
+if [ ! -e $ZEPHYR_TOOLCHAIN_VARIANT ]; then
+ echo "What toolchain you want to use? Select number:"
+ echo " 1. ARM."
+ echo " 2. ESP32."
+ read a
+ case $a in
+  "1")
+   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb"
+   export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
+   ;;
+  "2")
+   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=espressif"
+   echo "NOTE: Remember to setup SDK with: west espressif install" 
+   export ZEPHYR_TOOLCHAIN_VARIANT="espressif"
+   ;;
+  *)
+   echo "Invalid choice! Select valid number. Ejecting!"
+   exit
+   ;;
+  esac
 fi
 
 if [ $# -eq 0 ]; then
