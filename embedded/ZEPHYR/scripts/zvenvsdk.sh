@@ -4,7 +4,7 @@
 # ZEPHYR_BASE ENVIRONMENT VARIABLE CAN OVERRIDE ZEPHYR LOCATION.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20210714.1"
+VERSION="20211008.3"
 PREFIX="$HOME/usr/local"
 PYBIN="python3.8"
 PYUTILS="pip wheel west pyocd pyserial"
@@ -12,9 +12,11 @@ export PYVENVLOC="$PREFIX/venv38zephyr"
 export ZEPHYRLOC="$PREFIX/zephyrproject"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH="/usr/local/gcc-arm-embedded"
+export RISCV32_TOOLCHAIN_PATH="/usr/local/riscv32-unknown-elf"
+export RISCV64_TOOLCHAIN_PATH="/usr/local/riscv64-none-elf"
 export PATH="/usr/local/bin:$PATH" # DTC binary name conflict.
-export ESPRESSIF_TOOLCHAIN_PATH="${HOME}/.espressif/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf"
-export PATH=$PATH:$ESPRESSIF_TOOLCHAIN_PATH/bin
+export ESPRESSIF_TOOLCHAIN_PATH="${HOME}/.espressif/tools/zephyr"
+export PATH="$PATH:$ESPRESSIF_TOOLCHAIN_PATH"
 #ESP32 NOTE: Remember to run `west espressif install` !
 # See: https://docs.zephyrproject.org/latest/boards/xtensa/esp32/doc/index.html
 
@@ -34,7 +36,7 @@ shell_install_self()
 {
  echo "COPYING MYSELF TO: $PREFIX/bin"
  mkdir -p $PREFIX/bin
- cp $0 $PREFIX/bin/
+ cp -f $0 $PREFIX/bin/
  echo "export PATH=\"$PREFIX/bin\":$PATH" >> $HOME/.profile
  echo "DONE :-)"
 }
@@ -54,7 +56,9 @@ python_run_venv()
 python_update_venv()
 {
  echo "UPDATING PYTHON VIRTUAL ENVIRONMENT AT: $PYVENVLOC"
+ set +e # ALLOW ERRORS
  pip install -U $PYUTILS
+ set -e # STOP ALLOWING ERRORS
 }
 
 zephyr_find_env()
@@ -74,8 +78,7 @@ zephyr_find_env()
   ZEPHYR_BASE="$ZEPHYRLOC/zephyr"
   echo "USING DEFAULT ZEPHYR_BASE: $ZEPHYR_BASE"
  else
-  echo "ERROR: ZEPHYR ENVIRONMENT NOT FUOND! RUN ME WITH NO PARAMETER FOR SETUP!"
-  exit 1
+  echo "ZEPHYR ENVIRONMENT NOT FUOND!"
  fi
 }
 
@@ -235,9 +238,10 @@ case $1 in
   python_setup_venv
   python_run_venv
   python_update_venv
+echo "====#: $#"
   if [ $# -eq 2 ]; then
    if [ $2 == "-zephyr" ]; then
-    echo "SETUP ZEPHYR HERE"
+    echo "OPTIONAL SETUP ZEPHYR NOW"
     zephyr_find_env
     zephyr_setup_env
     zephyr_update_env
@@ -299,6 +303,7 @@ if [ ! -e $ZEPHYR_TOOLCHAIN_VARIANT ]; then
  echo "What toolchain you want to use? Select number:"
  echo " 1. ARM."
  echo " 2. ESP32."
+ echo " 3. RISC-V (local)."
  read a
  case $a in
   "1")
@@ -309,6 +314,11 @@ if [ ! -e $ZEPHYR_TOOLCHAIN_VARIANT ]; then
    echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=espressif"
    echo "NOTE: Remember to setup SDK with: west espressif install" 
    export ZEPHYR_TOOLCHAIN_VARIANT="espressif"
+   ;;
+  "3")
+   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=riscv32"
+   export PATH="$PATH:RISCV32_TOOLCHAIN_PATH/bin:RISCV64_TOOLCHAIN_PATH/bin"
+   export ZEPHYR_TOOLCHAIN_VARIANT="riscv"
    ;;
   *)
    echo "Invalid choice! Select valid number. Ejecting!"
