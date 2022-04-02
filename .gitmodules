@@ -1,5 +1,5 @@
 [submodule "electronics/libs/spice/KiCad-Spice-Library.git"]
-	path = electronics/libs/spice/KiCad-Spice-Library.git
+	path = electronics/lib/spice/KiCad-Spice-Library.git
 	url = https://github.com/kicad-spice-library/KiCad-Spice-Library.git
 [submodule "electronics/fpga/SpartanEdgeAcceleratorBoard/res/Demo_project.git"]
 	path = electronics/fpga/SpartanEdgeAcceleratorBoard/references/Demo_project.git
