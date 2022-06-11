@@ -1,14 +1,13 @@
 #!/usr/bin/env bash
-# THIS SCRIPT CREATES A LOCAL WORKING ENVIRONMENT FOR ZEPHYR.
-# ZEPHYR USES PYTHON VENV AND WEST FOR BASIC OPERATIONS.
-# ZEPHYR_BASE ENVIRONMENT VARIABLE CAN OVERRIDE ZEPHYR LOCATION.
+# THIS SCRIPT CREATES A LOCAL PYTHON EMBEDDED WORKING ENVIRONMENT.
+# CAN BE USED WITH ZEPHYR, MICROPYTHON ON ARM, ESP32, ETC.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20211008.3"
-PREFIX="$HOME/usr/local"
-PYBIN="python3.8"
-PYUTILS="pip wheel west pyocd pyserial"
-export PYVENVLOC="$PREFIX/venv38zephyr"
+VERSION="20220611.1"
+PREFIX="$HOME/.local"
+PYBIN="python3.9"
+PYUTILS="pip wheel west pyocd pyserial esptool mpremote adafruit-ampy"
+export PYVENVLOC="$PREFIX/venv3.9embedded"
 export ZEPHYRLOC="$PREFIX/zephyrproject"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH="/usr/local/gcc-arm-embedded"
@@ -34,9 +33,17 @@ shell_run()
 
 shell_install_self()
 {
- echo "COPYING MYSELF TO: $PREFIX/bin"
+ echo "COPYING MYSELF TO: $PREFIX/bin/$0"
  mkdir -p $PREFIX/bin
- cp -f $0 $PREFIX/bin/
+ if [ ! -e $PREFIX/bin/$0 ]; then
+  cp -f $0 $PREFIX/bin/
+ else
+  echo "Target $PREFIX/bin/$0 already exist."
+  if ! cmp -s -- "$0" "$PREFIX/bin/$0"; then
+   echo "But file differs. Copying anyway."
+   cp -f $0 $PREFIX/bin/$0
+  fi
+ fi
  echo "export PATH=\"$PREFIX/bin\":$PATH" >> $HOME/.profile
  echo "DONE :-)"
 }
@@ -118,11 +125,11 @@ zephyr_update_env()
 
 command_usage()
 {
- echo "================================================================"
- echo " ZEPHYR + PYTHON VIRTUALENV SDK HELPER BY CeDeROM ($VERSION)"
- echo "================================================================"
+ echo "================================================================="
+ echo "  EMBEDDED PYTHON VIRTUALENV SDK HELPER BY CeDeROM ($VERSION)"
+ echo "================================================================="
  echo
- echo " This script quckly lands you in Python+Zephyr SDK VENV."
+ echo " This script quckly lands you in Python for Embedded SDK VENV."
  echo " Note that Zephyr SDK will now be created with west udpate, so"
  echo " this is not created by default anymore (use init -zephyr)."
  echo " By default script sets up SDK then spawns shell."
@@ -238,7 +245,6 @@ case $1 in
   python_setup_venv
   python_run_venv
   python_update_venv
-echo "====#: $#"
   if [ $# -eq 2 ]; then
    if [ $2 == "-zephyr" ]; then
     echo "OPTIONAL SETUP ZEPHYR NOW"
