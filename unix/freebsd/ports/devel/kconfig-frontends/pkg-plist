@@ -1,0 +1,18 @@
+bin/kconfig
+bin/kconfig-conf
+bin/kconfig-diff
+bin/kconfig-merge
+bin/kconfig-tweak
+include/kconfig/expr.h
+include/kconfig/list.h
+include/kconfig/lkc.h
+include/kconfig/lkc_proto.h
+lib/libkconfig-parser-4.11.0.so
+lib/libkconfig-parser.so
+libdata/pkgconfig/kconfig-parser.pc
+# TODO
+#%%GCONF%%%%DATADIR%%/gconf.glade
+#%%GCONF%%bin/kconfig-gconf
+#%%MCONF%%bin/kconfig-mconf
+#%%NCONF%%bin/kconfig-nconf
+#%%QCONF%%bin/kconfig-qconf
