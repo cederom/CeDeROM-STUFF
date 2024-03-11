@@ -600,3 +600,4 @@ Error: Sierra control message failed (error -4). Abort
 ## References
 
 * Application Developer's Guide. Linux QMI SDK. Document: 4110914.
+* http://netlab.dhis.org/wiki/hardware:huawei:e3272.
