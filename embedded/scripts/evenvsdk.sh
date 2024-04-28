@@ -3,11 +3,13 @@
 # CAN BE USED WITH ZEPHYR, MICROPYTHON ON ARM, ESP32, ETC.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20220611.1"
+VERSION="20240428.1"
 PREFIX="$HOME/.local"
-PYBIN="python3.9"
+SCRIPT_FILENAME=`basename $0`
+PYVER="3.11"
+PYBIN="python$PYVER"
 PYUTILS="pip wheel west pyocd pyserial esptool mpremote adafruit-ampy"
-export PYVENVLOC="$PREFIX/venv3.9embedded"
+export PYVENVLOC="$PREFIX/venv-$PYVER-embedded"
 export ZEPHYRLOC="$PREFIX/zephyrproject"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH="/usr/local/gcc-arm-embedded"
@@ -33,15 +35,17 @@ shell_run()
 
 shell_install_self()
 {
- echo "COPYING MYSELF TO: $PREFIX/bin/$0"
+ echo "COPYING MYSELF TO: $PREFIX/bin/$SCRIPT_FILENAME"
  mkdir -p $PREFIX/bin
- if [ ! -e $PREFIX/bin/$0 ]; then
+ if [ ! -e $PREFIX/bin/$SCRIPT_FILENAME ]; then
   cp -f $0 $PREFIX/bin/
  else
-  echo "Target $PREFIX/bin/$0 already exist."
-  if ! cmp -s -- "$0" "$PREFIX/bin/$0"; then
-   echo "But file differs. Copying anyway."
-   cp -f $0 $PREFIX/bin/$0
+  echo "Target $PREFIX/bin/$SCRIPT_FILENAME already exist."
+  if ! cmp -s -- "$0" "$PREFIX/bin/$SCRIPT_FILENAME"; then
+   echo "Script file differs. Copying anyway."
+   cp -f $0 $PREFIX/bin/
+  else
+    echo "Script file the same. No need to copy."
   fi
  fi
  echo "export PATH=\"$PREFIX/bin\":$PATH" >> $HOME/.profile
