@@ -3,16 +3,16 @@
 # CAN BE USED WITH ZEPHYR, MICROPYTHON ON ARM, ESP32, ETC.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20240630.1"
+VERSION="20240630.2"
+PWD_START=`pwd`
 PREFIX="$HOME/.local"
 PYBIN="python3.9"
 PYUTILS_ZEPHYR="west"
 PYUTILS_ARM="pyocd"
 PYUTILS_ESP="esptool"
 PYUTILS_MPY="mpremote adafruit-ampy"
-PYUTILS="pip wheel pyserial"
-PYUTILS="pip wheel pyserial"
-# Comment out below PYUTILS what is not needed.
+PYUTILS="wheel pyserial"
+# Comment out below unwanted PYUTILS.
 PYTUILS="$PYUTILS $PYTUILS_ZEPHYR"
 PYTUILS="$PYUTILS $PYUTILS_ARM"
 PYTUILS="$PYUTILS $PYUTILS_ESP"
@@ -44,6 +44,7 @@ export PATH="$PATH:$ESP_ZEPHYR_PATH:$ESP_IDF_TOOLS_PATH"
 
 shell_run()
 {
+ cd $PWD_START
  case $SHELL in
   *zsh*) $SHELL -f;;
   *) $SHELL --norc
@@ -102,17 +103,18 @@ esp_setup_env()
   mkdir -p $ESPLOC
  fi
  if [ ! -d $ESP_IDF_PATH ]; then
-  echo "Fetch ESP IDF git repo."
+  echo "FETCH ESP IDF GIT REPO."
   git clone $ESP_IDF_GIT $ESP_IDF_PATH
  fi
  cd $ESP_IDF_PATH
- echo "Pull all git repo updates."
+ echo "PULL ALL GIT REPO UPDATES."
  git pull --all
- echo "Checkout to branch: $ESP_IDF_BRANCH."
+ echo "GIT CHECKOUT BRANCH: $ESP_IDF_BRANCH."
  git checkout $ESP_IDF_BRANCH
- echo "Install python dependencies."
+ echo "INSTALL PYTHON PACKAGES AND DEPENDENCIES."
  pip install -r tools/requirements/requirements.core.txt
- echo "Launch ESP IDF ./install.sh script."
+ pip install $PYUTILS
+ echo "LAUNCH ESP IDF INSTALL SCRIPT (MAY FAIL NO WORRIES)."
  # Note: This script is known to fail, run it to obtain packages.
  set +e
  ./install.sh
