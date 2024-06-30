@@ -3,23 +3,40 @@
 # CAN BE USED WITH ZEPHYR, MICROPYTHON ON ARM, ESP32, ETC.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20240428.1"
+VERSION="20240630.1"
 PREFIX="$HOME/.local"
-SCRIPT_FILENAME=`basename $0`
-PYVER="3.11"
-PYBIN="python$PYVER"
-PYUTILS="pip wheel west pyocd pyserial esptool mpremote adafruit-ampy"
-export PYVENVLOC="$PREFIX/venv-$PYVER-embedded"
+PYBIN="python3.9"
+PYUTILS_ZEPHYR="west"
+PYUTILS_ARM="pyocd"
+PYUTILS_ESP="esptool"
+PYUTILS_MPY="mpremote adafruit-ampy"
+PYUTILS="pip wheel pyserial"
+PYUTILS="pip wheel pyserial"
+# Comment out below PYUTILS what is not needed.
+PYTUILS="$PYUTILS $PYTUILS_ZEPHYR"
+PYTUILS="$PYUTILS $PYUTILS_ARM"
+PYTUILS="$PYUTILS $PYUTILS_ESP"
+PYUTILS="$PYUTILS $PYUTILS_MPY"
+export PYVENVLOC="$PREFIX/venv3.9embedded"
 export ZEPHYRLOC="$PREFIX/zephyrproject"
 export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
 export GNUARMEMB_TOOLCHAIN_PATH="/usr/local/gcc-arm-embedded"
 export RISCV32_TOOLCHAIN_PATH="/usr/local/riscv32-unknown-elf"
 export RISCV64_TOOLCHAIN_PATH="/usr/local/riscv64-none-elf"
 export PATH="/usr/local/bin:$PATH" # DTC binary name conflict.
-export ESPRESSIF_TOOLCHAIN_PATH="${HOME}/.espressif/tools/zephyr"
-export PATH="$PATH:$ESPRESSIF_TOOLCHAIN_PATH"
-#ESP32 NOTE: Remember to run `west espressif install` !
-# See: https://docs.zephyrproject.org/latest/boards/xtensa/esp32/doc/index.html
+export ESP_ZEPHYR_PATH="${HOME}/.espressif/tools/zephyr"
+export ESP_BASE="$HOME/.espressif"
+export ESP_TOOLS_PATH="${HOME}/.espressif/esp-idf.git/tools"
+export ESP_IDF_GIT="https://github.com/espressif/esp-idf.git"
+export ESP_IDF_PATH="$ESP_BASE/esp-idf.git"
+export IDF_PATH=$ESP_IDF_PATH
+export ESP_IDF_TOOLS_PATH=$ESP_IDF_PATH/tools
+#export ESP_IDF_BRANCH="v5.2.2"
+export ESP_IDF_BRANCH="master"
+export PATH="$PATH:$ESP_ZEPHYR_PATH:$ESP_IDF_TOOLS_PATH"
+# NOTE: Run `west espressif install` to have esp zephyr sdk!
+#  See: https://docs.zephyrproject.org/latest/boards/xtensa/esp32/doc/index.html
+# NOTE: Clone esp-idf to ~/.espressif/esp-idf.git to have esp idf tools.
 
 ###############################################################
 # FUNCTIONS DEFINITION
@@ -35,17 +52,15 @@ shell_run()
 
 shell_install_self()
 {
- echo "COPYING MYSELF TO: $PREFIX/bin/$SCRIPT_FILENAME"
+ echo "COPYING MYSELF TO: $PREFIX/bin/$0"
  mkdir -p $PREFIX/bin
- if [ ! -e $PREFIX/bin/$SCRIPT_FILENAME ]; then
+ if [ ! -e $PREFIX/bin/$0 ]; then
   cp -f $0 $PREFIX/bin/
  else
-  echo "Target $PREFIX/bin/$SCRIPT_FILENAME already exist."
-  if ! cmp -s -- "$0" "$PREFIX/bin/$SCRIPT_FILENAME"; then
-   echo "Script file differs. Copying anyway."
-   cp -f $0 $PREFIX/bin/
-  else
-    echo "Script file the same. No need to copy."
+  echo "Target $PREFIX/bin/$0 already exist."
+  if ! cmp -s -- "$0" "$PREFIX/bin/$0"; then
+   echo "But file differs. Copying anyway."
+   cp -f $0 $PREFIX/bin/$0
   fi
  fi
  echo "export PATH=\"$PREFIX/bin\":$PATH" >> $HOME/.profile
@@ -72,6 +87,61 @@ python_update_venv()
  set -e # STOP ALLOWING ERRORS
 }
 
+esp_find_env()
+{
+ # THIS NEEDS TO BE RUN WUTHIN PYTHON VENV ALREADY!
+ if [ ! -d $ESP_BASE ]; then
+  echo "ESPRESSIF IDF ENVIRONMENT NOT FOUND! SETUP WITH: $0 init esp."
+  exit -1
+ fi
+}
+
+esp_setup_env()
+{
+ if [ ! -e $ESPLOC ]; then
+  mkdir -p $ESPLOC
+ fi
+ if [ ! -d $ESP_IDF_PATH ]; then
+  echo "Fetch ESP IDF git repo."
+  git clone $ESP_IDF_GIT $ESP_IDF_PATH
+ fi
+ cd $ESP_IDF_PATH
+ echo "Pull all git repo updates."
+ git pull --all
+ echo "Checkout to branch: $ESP_IDF_BRANCH."
+ git checkout $ESP_IDF_BRANCH
+ echo "Install python dependencies."
+ pip install -r tools/requirements/requirements.core.txt
+ echo "Launch ESP IDF ./install.sh script."
+ # Note: This script is known to fail, run it to obtain packages.
+ set +e
+ ./install.sh
+ set -e
+ echo "ESP IDF SDK SETUP COMPLETE :-)"
+ echo "USE IT WITH: `basename $0` esp."
+}
+
+esp_run_env()
+{
+ cd $ESP_IDF_PATH
+ source add_path.sh
+ echo "SEARCHING FOR ESP IDF COMPILERS"
+ ESP_TOOL=`find $ESP_BASE -type f -name "*-gcc" -exec dirname {} \;`
+ for toolpath in $ESP_TOOL; do export PATH="$toolpath:$PATH"; done
+ echo "ADDED: $ESP_TOOL."
+ echo "SEARCHING FOR ESP IDF DEBUGGERS"
+ ESP_TOOL=`find $ESP_BASE -type f -name "*-gdb" -exec dirname {} \;`
+ for toolpath in $ESP_TOOL; do export PATH="$toolpath:$PATH"; done
+ echo "ADDED: $ESP_TOOL."
+ echo "YOU ARE NOW IN ESP IDF SHELL. HAVE FUN :-)"
+}
+
+esp_update_env()
+{
+ python_run_venv
+ esp_setup_env
+}
+
 zephyr_find_env()
 {
  # THIS NEEDS TO BE RUN WITHIN PYTHON VENV ALREADY!
@@ -89,7 +159,8 @@ zephyr_find_env()
   ZEPHYR_BASE="$ZEPHYRLOC/zephyr"
   echo "USING DEFAULT ZEPHYR_BASE: $ZEPHYR_BASE"
  else
-  echo "ZEPHYR ENVIRONMENT NOT FUOND!"
+  echo "ZEPHYR ENVIRONMENT NOT FUOND! SETUP WITH: $0 init zephyr"
+  exit -1
  fi
 }
 
@@ -112,7 +183,7 @@ zephyr_run_env()
  if [ -e $ZEPHYR_BASE/zephyr-env.sh ]; then
   source "$ZEPHYR_BASE/zephyr-env.sh"
  else
-  echo "ERROR: ZEPHYR ENVIRONMENT INVALID! RUN ME WITH NO PARAMETER FOR SETUP!"
+  echo "ERROR: ZEPHYR ENVIRONMENT INVALID! SETUP WITH: $0 init zephyr."
   exit 1
  fi
 }
@@ -134,20 +205,25 @@ command_usage()
  echo "================================================================="
  echo
  echo " This script quckly lands you in Python for Embedded SDK VENV."
- echo " Note that Zephyr SDK will now be created with west udpate, so"
+ echo " Note that Zephyr SDK will can created with west udpate, so"
  echo " this is not created by default anymore (use init -zephyr)."
- echo " By default script sets up SDK then spawns shell."
+ echo " Note that Espressif IDF SDK can be installed with init esp."
+ echo " By default script just spawns selected SDK shell."
  echo " Adjust script parameters in its source code."
  echo " Script location: $0"
  echo
  echo "Available commands:"
  echo "    help : Display this help."
- echo "    init : Initialize Python and Zephyr SDK."
- echo "           -zephyr : (optional) init standalone Zephyr SDK."
+ echo "    init : Initialize Python Venv."
+ echo "           esp    : (optional) init Espressif IDF SDK."
+ echo "           zephyr : (optional) init standalone Zephyr SDK."
  echo "  update : Update Python and Zephyr SDK."
+ echo "           esp    : (optional) update Espressif IDF SDK."
+ echo "           zephyr : (optional) update Zephyr SDK."
  echo " install : Install this sctipt to $PREFIX/bin."
- echo "   shell : Spawn Python VirtualEnv + ZephyrSDK shell."
- echo "    venv : Spawn Python VirtualEnv shell only (no ZephyrSDK)."
+ echo "    venv : Spawn Python Venv shell only."
+ echo "    esp  : Spawn Python Venv + ESP IDF SDK shell."
+ echo "  zephyr : Spawn Python Venv + Zephyr SDK shell."
  echo "   flash : Your own way to flash a Target." 
  echo "           -dfu  : (optional) generate and flash the DFU ZIP."
  echo "           -pyocd: (optional) use pyOCD to flash firmware."
@@ -155,7 +231,6 @@ command_usage()
  echo "    uart : Your own way to spawn UART CLI with Target."
  echo "           port  : (optional) use this UART port." 
  echo
- echo " If none of above is provided then command is run in zephyr venv!"
  echo
 }
 
@@ -226,22 +301,35 @@ command_uart()
 
 command_usage
 case $1 in
- [sS][hH][eE][lL][lL])
+ [vV][eE][nN][vV])
+  python_run_venv
+  shell_run
+  exit
+ ;;
+ [eE][sS][pP])
+  python_run_venv
+  esp_find_env
+  esp_run_env
+  shell_run
+  exit
+ ;;
+ [zZ][eE][pP][hH][yY][rR])
   python_run_venv
   zephyr_find_env
   zephyr_run_env
   shell_run
   exit
  ;;
- [vV][eE][nN][vV])
-  python_run_venv
-  shell_run
-  exit
- ;; 
  [uU][pP][dD][aA][tT][eE])
   python_run_venv
   python_update_venv
-  zephyr_update_env
+  if [ $# -eq 2 ]; then
+   if [ $2 == "zephyr" ]; then
+    zephyr_update_env
+   elif [ $2 == "esp" ]; then
+    esp_update_env
+   fi
+  fi
   exit
  ;;
  [iI][nN][iI][tT])
@@ -250,11 +338,15 @@ case $1 in
   python_run_venv
   python_update_venv
   if [ $# -eq 2 ]; then
-   if [ $2 == "-zephyr" ]; then
-    echo "OPTIONAL SETUP ZEPHYR NOW"
+   if [ $2 == "zephyr" ]; then
+    echo "SETUP ZEPHYR NOW"
     zephyr_find_env
     zephyr_setup_env
     zephyr_update_env
+   elif [ $2 == "esp" ]; then
+    echo "SETUP ESP IDF NOW"
+    esp_setup_env
+    esp_update_env
    fi
   fi
   exit
@@ -282,7 +374,7 @@ esac
 ###############################################################
 
 if [ ! -e "$PYVENVLOC/bin/activate" ]; then
- command_usage
+# command_usage
  shell_install_self
  echo "PYTHON VIRTUAL ENVIRONMENT NOT FOUND. CREATE IT? [y/N]"
  read a
@@ -293,48 +385,6 @@ if [ ! -e "$PYVENVLOC/bin/activate" ]; then
  fi
 else
  python_run_venv
-fi
-
-zephyr_find_env
-
-if [ ! -e $ZEPHYRLOC ]; then
- echo "ZEPHYR ENVIRONMENT NOT FOUND. CREATE? [y/N]"
- read a
- if [[ $a =~ ^[yY] ]]; then
-  zephyr_setup_env
-  zephyr_run_env
-  zephyr_update_env
- fi
-else
- zephyr_run_env
-fi
-
-if [ ! -e $ZEPHYR_TOOLCHAIN_VARIANT ]; then
- echo "What toolchain you want to use? Select number:"
- echo " 1. ARM."
- echo " 2. ESP32."
- echo " 3. RISC-V (local)."
- read a
- case $a in
-  "1")
-   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=gnuarmemb"
-   export ZEPHYR_TOOLCHAIN_VARIANT="gnuarmemb"
-   ;;
-  "2")
-   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=espressif"
-   echo "NOTE: Remember to setup SDK with: west espressif install" 
-   export ZEPHYR_TOOLCHAIN_VARIANT="espressif"
-   ;;
-  "3")
-   echo "Setting: ZEPHYR_TOOLCHAIN_VARIANT=riscv32"
-   export PATH="$PATH:RISCV32_TOOLCHAIN_PATH/bin:RISCV64_TOOLCHAIN_PATH/bin"
-   export ZEPHYR_TOOLCHAIN_VARIANT="riscv"
-   ;;
-  *)
-   echo "Invalid choice! Select valid number. Ejecting!"
-   exit
-   ;;
-  esac
 fi
 
 if [ $# -eq 0 ]; then
