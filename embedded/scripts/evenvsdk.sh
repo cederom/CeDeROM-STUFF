@@ -3,7 +3,7 @@
 # CAN BE USED WITH ZEPHYR, MICROPYTHON ON ARM, ESP32, ETC.
 # CeDeROM / TOMEK@CEDRO.INFO
 set -e
-VERSION="20240630.2"
+VERSION="20240805.1"
 PWD_START=`pwd`
 PREFIX="$HOME/.local"
 PYBIN="python3.9"
@@ -53,15 +53,18 @@ shell_run()
 
 shell_install_self()
 {
- echo "COPYING MYSELF TO: $PREFIX/bin/$0"
+ DESTINATION="$PREFIX/bin/`basename $0`"
+ echo "COPYING MYSELF TO: $DESTINATION"
  mkdir -p $PREFIX/bin
- if [ ! -e $PREFIX/bin/$0 ]; then
+ if [ ! -e $DESTINATION ]; then
   cp -f $0 $PREFIX/bin/
- else
-  echo "Target $PREFIX/bin/$0 already exist."
-  if ! cmp -s -- "$0" "$PREFIX/bin/$0"; then
+ elif [ $(dirname "$0") == $PREFIX/bin ]; then
+  echo "Target $DESTINATION already exist."
+  if ! cmp -s -- "$0" "$DESTINATION"; then
    echo "But file differs. Copying anyway."
-   cp -f $0 $PREFIX/bin/$0
+   cp -fb $0 $DESTINATION
+  else
+   echo "Files are the same, skipping copy."
   fi
  fi
  echo "export PATH=\"$PREFIX/bin\":$PATH" >> $HOME/.profile
