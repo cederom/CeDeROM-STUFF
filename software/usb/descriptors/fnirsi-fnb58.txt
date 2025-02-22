@@ -1,0 +1,219 @@
+ugen0.7: <FNIRSI FNB-58> at usbus0, cfg=0 md=HOST spd=FULL (12Mbps) pwr=ON (100mA)
+
+  bLength = 0x0012 
+  bDescriptorType = 0x0001 
+  bcdUSB = 0x0200 
+  bDeviceClass = 0x0000  <Probed by interface class>
+  bDeviceSubClass = 0x0000 
+  bDeviceProtocol = 0x0000 
+  bMaxPacketSize0 = 0x0040 
+  idVendor = 0x2e3c 
+  idProduct = 0x5558 
+  bcdDevice = 0x0200 
+  iManufacturer = 0x0001  <FNIRSI>
+  iProduct = 0x0002  <FNB-58>
+  iSerialNumber = 0x0003  <085A94BC05B3>
+  bNumConfigurations = 0x0001 
+
+ Configuration index 0
+
+    bLength = 0x0009 
+    bDescriptorType = 0x0002 
+    wTotalLength = 0x0092 
+    bNumInterfaces = 0x0004 
+    bConfigurationValue = 0x0001 
+    iConfiguration = 0x0000  <no string>
+    bmAttributes = 0x00c0 
+    bMaxPower = 0x0032 
+
+    Additional Descriptor
+
+    bLength = 0x08
+    bDescriptorType = 0x0b
+    bDescriptorSubType = 0x00
+     RAW dump: 
+     0x00 | 0x08, 0x0b, 0x00, 0x01, 0x08, 0x06, 0x50, 0x00
+
+
+    Interface 0
+      bLength = 0x0009 
+      bDescriptorType = 0x0004 
+      bInterfaceNumber = 0x0000 
+      bAlternateSetting = 0x0000 
+      bNumEndpoints = 0x0002 
+      bInterfaceClass = 0x0008  <Mass storage>
+      bInterfaceSubClass = 0x0006 
+      bInterfaceProtocol = 0x0050 
+      iInterface = 0x0000  <no string>
+
+     Endpoint 0
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0084  <IN>
+        bmAttributes = 0x0002  <BULK>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x0000 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+     Endpoint 1
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0004  <OUT>
+        bmAttributes = 0x0002  <BULK>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x0000 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+      Additional Descriptor
+
+      bLength = 0x08
+      bDescriptorType = 0x0b
+      bDescriptorSubType = 0x01
+       RAW dump: 
+       0x00 | 0x08, 0x0b, 0x01, 0x02, 0x02, 0x02, 0x01, 0x00
+
+
+
+    Interface 1
+      bLength = 0x0009 
+      bDescriptorType = 0x0004 
+      bInterfaceNumber = 0x0001 
+      bAlternateSetting = 0x0000 
+      bNumEndpoints = 0x0001 
+      bInterfaceClass = 0x0002  <Communication device>
+      bInterfaceSubClass = 0x0002 
+      bInterfaceProtocol = 0x0001 
+      iInterface = 0x0000  <no string>
+
+      Additional Descriptor
+
+      bLength = 0x05
+      bDescriptorType = 0x24
+      bDescriptorSubType = 0x00
+       RAW dump: 
+       0x00 | 0x05, 0x24, 0x00, 0x10, 0x01
+
+
+      Additional Descriptor
+
+      bLength = 0x05
+      bDescriptorType = 0x24
+      bDescriptorSubType = 0x01
+       RAW dump: 
+       0x00 | 0x05, 0x24, 0x01, 0x00, 0x01
+
+
+      Additional Descriptor
+
+      bLength = 0x04
+      bDescriptorType = 0x24
+      bDescriptorSubType = 0x02
+       RAW dump: 
+       0x00 | 0x04, 0x24, 0x02, 0x02
+
+
+      Additional Descriptor
+
+      bLength = 0x05
+      bDescriptorType = 0x24
+      bDescriptorSubType = 0x06
+       RAW dump: 
+       0x00 | 0x05, 0x24, 0x06, 0x00, 0x01
+
+
+     Endpoint 0
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0082  <IN>
+        bmAttributes = 0x0003  <INTERRUPT>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x000a 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+
+    Interface 2
+      bLength = 0x0009 
+      bDescriptorType = 0x0004 
+      bInterfaceNumber = 0x0002 
+      bAlternateSetting = 0x0000 
+      bNumEndpoints = 0x0002 
+      bInterfaceClass = 0x000a  <CDC-data>
+      bInterfaceSubClass = 0x0000 
+      bInterfaceProtocol = 0x0000 
+      iInterface = 0x0000  <no string>
+
+     Endpoint 0
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0081  <IN>
+        bmAttributes = 0x0002  <BULK>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x0000 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+     Endpoint 1
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0001  <OUT>
+        bmAttributes = 0x0002  <BULK>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x0000 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+      Additional Descriptor
+
+      bLength = 0x08
+      bDescriptorType = 0x0b
+      bDescriptorSubType = 0x03
+       RAW dump: 
+       0x00 | 0x08, 0x0b, 0x03, 0x01, 0x03, 0x00, 0x00, 0x00
+
+
+
+    Interface 3
+      bLength = 0x0009 
+      bDescriptorType = 0x0004 
+      bInterfaceNumber = 0x0003 
+      bAlternateSetting = 0x0000 
+      bNumEndpoints = 0x0002 
+      bInterfaceClass = 0x0003  <HID device>
+      bInterfaceSubClass = 0x0000 
+      bInterfaceProtocol = 0x0000 
+      iInterface = 0x0000  <no string>
+
+      Additional Descriptor
+
+      bLength = 0x09
+      bDescriptorType = 0x21
+      bDescriptorSubType = 0x00
+       RAW dump: 
+       0x00 | 0x09, 0x21, 0x00, 0x01, 0x00, 0x01, 0x22, 0x1f, 
+       0x08 | 0x00
+
+     Endpoint 0
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0083  <IN>
+        bmAttributes = 0x0003  <INTERRUPT>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x000a 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+     Endpoint 1
+        bLength = 0x0007 
+        bDescriptorType = 0x0005 
+        bEndpointAddress = 0x0003  <OUT>
+        bmAttributes = 0x0003  <INTERRUPT>
+        wMaxPacketSize = 0x0040 
+        bInterval = 0x000a 
+        bRefresh = 0x0000 
+        bSynchAddress = 0x0000 
+
+
+
