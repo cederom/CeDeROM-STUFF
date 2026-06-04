@@ -2804,10 +2804,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at 25.4 22.86 180)
 				(length 2.54)
-				(name "GP5_H2.1"
+				(name "GND_H2.1"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2822,10 +2822,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_in line
 				(at 25.4 20.32 180)
 				(length 2.54)
-				(name "GP13_H2.2"
+				(name "GND_H2.2"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2840,10 +2840,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 25.4 17.78 180)
 				(length 2.54)
-				(name "GP4_H2.3"
+				(name "VSYS_USB5V_H2.3"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2861,7 +2861,7 @@
 			(pin bidirectional line
 				(at 25.4 15.24 180)
 				(length 2.54)
-				(name "GP12_LCD_RST_H2.4"
+				(name "GP1_ADC_AVDD_H2.4"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2879,7 +2879,7 @@
 			(pin bidirectional line
 				(at 25.4 12.7 180)
 				(length 2.54)
-				(name "GP3_H2.5"
+				(name "GP6_IMU_SDA_H2.5"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2897,7 +2897,7 @@
 			(pin bidirectional line
 				(at 25.4 10.16 180)
 				(length 2.54)
-				(name "GP12_LCD_DIN_H2.6"
+				(name "GP0_BOOT_H2.6"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2915,7 +2915,7 @@
 			(pin bidirectional line
 				(at 25.4 7.62 180)
 				(length 2.54)
-				(name "GP2_H2.7"
+				(name "GP7_IMU_SCL_H2.7"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2933,7 +2933,7 @@
 			(pin bidirectional line
 				(at 25.4 5.08 180)
 				(length 2.54)
-				(name "GP10_LCD_CLK_H2.8"
+				(name "RESET_H2.8"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2948,10 +2948,10 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin bidirectional line
 				(at 25.4 2.54 180)
 				(length 2.54)
-				(name "GP1_BAT_ADC_H2.9"
+				(name "GP8_LCD_DC_H2.9"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2966,10 +2966,10 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin bidirectional line
 				(at 25.4 0 180)
 				(length 2.54)
-				(name "GP9_LCD_CS_H2.10"
+				(name "GP0_BOOT_H2.10"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -2984,10 +2984,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 25.4 -2.54 180)
 				(length 2.54)
-				(name "GP0_BOOT_H2.11"
+				(name "GP9_LCD_CS_H2.11"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3002,10 +3002,10 @@
 					)
 				)
 			)
-			(pin bidirectional line
+			(pin power_out line
 				(at 25.4 -5.08 180)
 				(length 2.54)
-				(name "GP8_LCD_DC_H2.12"
+				(name "GP1_BAT_ADC_H2.12"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3023,7 +3023,7 @@
 			(pin bidirectional line
 				(at 25.4 -7.62 180)
 				(length 2.54)
-				(name "RESET_H2.13"
+				(name "GP10_LCD_CLK_H2.13"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3041,7 +3041,7 @@
 			(pin bidirectional line
 				(at 25.4 -10.16 180)
 				(length 2.54)
-				(name "GP7_IMU_SCL_H2.14"
+				(name "GP2_H2.14"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3059,7 +3059,7 @@
 			(pin bidirectional line
 				(at 25.4 -12.7 180)
 				(length 2.54)
-				(name "GP0_BOOT_H2.15"
+				(name "GP11_LCD_DIN_H2.15"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3077,7 +3077,7 @@
 			(pin bidirectional line
 				(at 25.4 -15.24 180)
 				(length 2.54)
-				(name "GP6_IMU_SDA_H2.16"
+				(name "GP3_H2.16"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3095,7 +3095,7 @@
 			(pin bidirectional line
 				(at 25.4 -17.78 180)
 				(length 2.54)
-				(name "GP1_ADC_AVDD_H2.17"
+				(name "GP12_LCD_RST_H2.17"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3110,10 +3110,10 @@
 					)
 				)
 			)
-			(pin power_out line
+			(pin bidirectional line
 				(at 25.4 -20.32 180)
 				(length 2.54)
-				(name "VSYS_USB5V_H2.18"
+				(name "GP4_H2.18"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3128,10 +3128,10 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin bidirectional line
 				(at 25.4 -22.86 180)
 				(length 2.54)
-				(name "GND_H2.19"
+				(name "GP13_H2.19"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3146,10 +3146,10 @@
 					)
 				)
 			)
-			(pin power_in line
+			(pin bidirectional line
 				(at 25.4 -25.4 180)
 				(length 2.54)
-				(name "GND_H2.20"
+				(name "GP5_H2.20"
 					(effects
 						(font
 							(size 1.27 1.27)
@@ -3670,6 +3670,293 @@
 					)
 				)
 				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "RS3K-Z"
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "U"
+			(at -9.652 8.636 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "RS3K-X/H3"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Converter_DCDC:Converter_DCDC_TRACO_TEC3-24xxUI_THT"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://g.recomcdn.com/media/Datasheet/pdf/.fV3I1j-Y/.t2cce6a27d7f2ed5e1e1d/Datasheet-589/RS3K_-Z_.pdf"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Regulated SIP8 3W Isolated DC-DC 4.5-9V and 9-36V input 3kVDC/sec isolation up to 105C"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "ki_keywords" "recom,dcdc,isolated"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(symbol "RS3K-Z_0_1"
+			(rectangle
+				(start -10.16 7.62)
+				(end 10.16 -7.62)
+				(stroke
+					(width 0.254)
+					(type default)
+				)
+				(fill
+					(type background)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 7.62) (xy 0 6.35)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 5.08) (xy 0 3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 2.54) (xy 0 1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 0) (xy 0 -1.27)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -2.54) (xy 0 -3.81)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+			(polyline
+				(pts
+					(xy 0 -5.08) (xy 0 -6.35)
+				)
+				(stroke
+					(width 0)
+					(type default)
+				)
+				(fill
+					(type none)
+				)
+			)
+		)
+		(symbol "RS3K-Z_1_1"
+			(pin power_in line
+				(at -12.7 -5.08 0)
+				(length 2.54)
+				(name "-VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "1"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_in line
+				(at -12.7 5.08 0)
+				(length 2.54)
+				(name "+VIN"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "2"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin input line
+				(at -12.7 0 0)
+				(length 2.54)
+				(name "CTRL"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "3"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at 12.7 1.27 180)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "5"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 12.7 5.08 180)
+				(length 2.54)
+				(name "+VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "6"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin power_out line
+				(at 12.7 -5.08 180)
+				(length 2.54)
+				(name "-VOUT"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "7"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(pin no_connect line
+				(at 12.7 -1.27 180)
+				(length 2.54)
+				(hide yes)
+				(name "NC"
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+				(number "8"
 					(effects
 						(font
 							(size 1.27 1.27)
